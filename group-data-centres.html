@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Data Centre Companies — Group position for the Manifesto for Sustainable AI, ICAM BIP Toulouse 2026"/>
+<title>Data Centre Companies · Manifesto for Sustainable AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#004494;--blue-dk:#003776;--blue-bg:#F2F5F9;--blue-lt:#BFD0E4;
+  --yellow:#FFD617;--accent:#D97706;--accent-dk:#B45309;--accent-bg:#FEF3C7;
+  --text:#0D1B2A;--text-2:#374151;--muted:#6B7280;
+  --border:#E5E7EB;--bg:#FFFFFF;--bg2:#F9FAFB;
+  --r-sm:4px;--r-md:10px;--r-lg:14px;--r-pill:100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 36px;}
+.eu-strip{background:var(--blue);padding:10px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.eu-strip-l{display:flex;align-items:center;gap:10px;}
+.eu-stars{display:flex;gap:3px;}
+.eu-stars span{color:var(--yellow);font-size:9px;line-height:1;}
+.eu-label{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.07em;}
+.eu-strip-r{font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.05em;}
+.sitenav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid var(--blue);
+  display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:56px;
+  box-shadow:0 2px 12px rgba(0,68,148,.08);}
+.nav-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue);}
+.btn-back{background:transparent;border:1.5px solid var(--blue);color:var(--blue);
+  padding:7px 16px;border-radius:var(--r-pill);font-family:'Syne',sans-serif;
+  font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+.btn-back:hover{background:var(--blue-bg);}
+.group-hero{background:var(--accent);padding:80px 0 72px;position:relative;overflow:hidden;}
+.group-hero::before{content:'';position:absolute;right:-100px;top:-100px;width:420px;height:420px;border-radius:50%;border:70px solid rgba(255,255,255,.04);}
+.group-hero::after{content:'';position:absolute;left:-60px;bottom:-90px;width:320px;height:320px;border-radius:50%;border:50px solid rgba(255,255,255,.03);}
+.hero-inner{position:relative;z-index:1;}
+.group-num{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;font-family:'Inter',sans-serif;}
+.group-h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:18px;}
+.group-tagline{font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,.72);max-width:620px;line-height:1.76;font-weight:300;}
+.group-icon{font-size:80px;position:absolute;right:48px;bottom:36px;opacity:.18;line-height:1;}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.3) 100%);z-index:0;}
+.photo-sec{background:var(--bg2);border-bottom:1px solid var(--border);}
+.group-photo{width:100%;max-height:480px;object-fit:cover;display:block;}
+.photo-caption{padding:14px 36px;font-size:12px;color:var(--muted);background:var(--bg2);font-style:italic;}
+.about-sec{padding:80px 0;background:var(--bg);}
+.sec-tag{display:inline-flex;align-items:center;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:4px 13px;background:var(--accent-bg);border:1px solid rgba(217,119,6,.3);border-radius:var(--r-pill);margin-bottom:18px;}
+.sec-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:var(--text);margin-bottom:22px;}
+.about-text{font-size:15px;color:var(--text-2);line-height:1.84;max-width:760px;}
+.about-text p{margin-bottom:16px;}
+.about-text p:last-child{margin-bottom:0;}
+.principles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:36px;}
+.principle-card{background:var(--bg2);border:1.5px solid var(--border);border-left:4px solid var(--accent);border-radius:0 var(--r-lg) var(--r-lg) 0;padding:20px 22px;}
+.pc-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--accent-dk);margin-bottom:8px;}
+.pc-text{font-size:13.5px;color:var(--text-2);line-height:1.7;}
+.commitments-sec{padding:80px 0;background:var(--bg2);}
+.commitment-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.commitment-item{padding:22px 0;border-bottom:1px solid var(--border);display:flex;gap:18px;align-items:flex-start;}
+.commitment-item:last-child{border-bottom:none;padding-bottom:0;}
+.ci-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--accent);opacity:.5;flex-shrink:0;margin-top:2px;width:24px;text-align:right;}
+.ci-text{font-size:14.5px;color:var(--text);line-height:1.74;margin-bottom:7px;}
+.ci-source{font-size:11.5px;color:var(--muted);line-height:1.6;}
+.ci-source a{color:var(--blue);text-decoration:none;}
+.ci-source a:hover{text-decoration:underline;}
+.team-sec{padding:80px 0;background:var(--bg);}
+.team-placeholder{background:var(--bg2);border:1.5px dashed var(--border);border-radius:var(--r-lg);padding:52px 32px;text-align:center;}
+.team-placeholder p{font-size:14px;color:var(--muted);}
+footer{background:var(--blue-dk);padding:44px 0 36px;}
+.foot-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;text-align:center;margin-bottom:6px;}
+.foot-meta{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-bottom:20px;}
+.foot-back{display:flex;justify-content:center;}
+.foot-back a{color:rgba(255,255,255,.6);font-size:12px;text-decoration:underline;}
+.foot-back a:hover{color:#fff;}
+@media(max-width:640px){.wrap{padding:0 18px;}.group-hero{padding:60px 0 52px;}.group-icon{display:none;}.sitenav{padding:0 18px;}.eu-strip{padding:8px 18px;}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;}}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:8px;}
+.member-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:22px 18px;text-align:center;transition:box-shadow .18s,transform .18s;}
+.member-card:hover{box-shadow:0 6px 24px rgba(0,68,148,.1);transform:translateY(-2px);}
+.member-av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--blue) 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.member-name{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);line-height:1.3;}
+</style>
+</head>
+<body>
+<div class="eu-strip">
+  <div class="eu-strip-l">
+    <div class="eu-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <span class="eu-label">Co-funded by the Erasmus+ Programme of the European Union</span>
+  </div>
+  <span class="eu-strip-r">ICAM BIP Toulouse · 2026</span>
+</div>
+<nav class="sitenav">
+  <span class="nav-brand">Manifesto for Sustainable AI · ICAM BIP 2026</span>
+  <a href="manifesto.html" class="btn-back">← Back to Manifesto</a>
+</nav>
+
+<section class="group-hero">
+  <img src="../Top%20Pictures/DataaCenters.jpeg" alt="" class="hero-bg" aria-hidden="true"/>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="group-num">Group 2 of 6 · Signatory</div>
+    <h1 class="group-h1">Data Centre<br>Companies</h1>
+    <p class="group-tagline">The physical infrastructure behind every AI request — committed to responsible growth, local accountability, and shared value.</p>
+    <div class="group-icon" aria-hidden="true">🏭</div>
+  </div>
+</section>
+
+<section class="about-sec">
+  <div class="wrap">
+    <div class="sec-tag">Who We Are</div>
+    <h2 class="sec-h2">Our Position</h2>
+    <div class="about-text">
+      <p>We are the Data Centre Companies group. Our commitment is simple: Europe needs reliable digital infrastructure, but every project must be designed to respect people, local resources, and the environment. We provide the physical foundation that makes AI possible — the servers, networking, cooling systems, and power supply that run AI workloads at massive scale.</p>
+      <p>As demand for AI compute grows exponentially, so does the environmental footprint: energy consumption, water use for cooling, land occupation, and carbon emissions from construction. Our investment decisions shape whether AI scales sustainably. We welcome this debate because it holds us accountable and gives us a framework to demonstrate genuine commitment.</p>
+    </div>
+    <div class="principles-grid">
+      <div class="principle-card"><div class="pc-title">Build with purpose</div><p class="pc-text">We support data-centre capacity that enables useful digital services, research, and resilient public infrastructure. Growth should be justified by real need and responsible planning.</p></div>
+      <div class="principle-card"><div class="pc-title">Respect local limits</div><p class="pc-text">Projects must be designed around the realities of the host region. Communities, water resources, land use, and grid conditions must be considered before construction begins.</p></div>
+      <div class="principle-card"><div class="pc-title">Use resources responsibly</div><p class="pc-text">We will pursue efficient operation, lower-impact cooling, clean energy, and practical opportunities to recover value from waste heat. Progress based on measurable outcomes, not slogans.</p></div>
+      <div class="principle-card"><div class="pc-title">Create shared value</div><p class="pc-text">A responsible project leaves a positive local legacy through skills, employment, supplier opportunities, infrastructure contribution, and long-term community partnership.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-sec">
+  <img src="../Group%20Pictures/DataaCenters_grpPhoto.jpeg" alt="Data Centre Companies group — ICAM BIP Toulouse 2026" class="group-photo" onerror="this.style.display='none'"/>
+  <p class="photo-caption">Data Centre Companies group — ICAM BIP Toulouse 2026</p>
+</div>
+
+<section class="team-sec">
+  <div class="wrap">
+    <div class="sec-tag">The Team</div>
+    <h2 class="sec-h2">Group Members</h2>
+    <div class="team-grid">
+      <div class="member-card"><div class="member-av">NL</div><div class="member-name">Nishang Lingalwar</div></div>
+      <div class="member-card"><div class="member-av">AK</div><div class="member-name">Amit Kalwar</div></div>
+      <div class="member-card"><div class="member-av">AG</div><div class="member-name">Alejandro Galobart</div></div>
+      <div class="member-card"><div class="member-av">SU</div><div class="member-name">Sudeep</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-title">Manifesto for Sustainable AI · ICAM BIP Toulouse 2026</div>
+    <div class="foot-meta">Data Centre Companies · Group 2 of 6</div>
+    <div class="foot-back"><a href="manifesto.html">← Return to the full manifesto</a></div>
+  </div>
+</footer>
+</body>
+</html>

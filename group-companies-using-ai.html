@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Companies Using AI — Group position for the Manifesto for Sustainable AI, ICAM BIP Toulouse 2026"/>
+<title>Companies Using AI · Manifesto for Sustainable AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#004494;--blue-dk:#003776;--blue-bg:#F2F5F9;--blue-lt:#BFD0E4;
+  --yellow:#FFD617;--accent:#0D9488;--accent-dk:#0F766E;--accent-bg:#F0FDFA;
+  --text:#0D1B2A;--text-2:#374151;--muted:#6B7280;
+  --border:#E5E7EB;--bg:#FFFFFF;--bg2:#F9FAFB;
+  --r-sm:4px;--r-md:10px;--r-lg:14px;--r-pill:100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 36px;}
+.eu-strip{background:var(--blue);padding:10px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.eu-strip-l{display:flex;align-items:center;gap:10px;}
+.eu-stars{display:flex;gap:3px;}
+.eu-stars span{color:var(--yellow);font-size:9px;line-height:1;}
+.eu-label{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.07em;}
+.eu-strip-r{font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.05em;}
+.sitenav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:56px;box-shadow:0 2px 12px rgba(0,68,148,.08);}
+.nav-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue);}
+.btn-back{background:transparent;border:1.5px solid var(--blue);color:var(--blue);padding:7px 16px;border-radius:var(--r-pill);font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+.btn-back:hover{background:var(--blue-bg);}
+.group-hero{background:var(--accent);padding:80px 0 72px;position:relative;overflow:hidden;}
+.group-hero::before{content:'';position:absolute;right:-100px;top:-100px;width:420px;height:420px;border-radius:50%;border:70px solid rgba(255,255,255,.04);}
+.group-hero::after{content:'';position:absolute;left:-60px;bottom:-90px;width:320px;height:320px;border-radius:50%;border:50px solid rgba(255,255,255,.03);}
+.hero-inner{position:relative;z-index:1;}
+.group-num{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;font-family:'Inter',sans-serif;}
+.group-h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:18px;}
+.group-tagline{font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,.72);max-width:620px;line-height:1.76;font-weight:300;}
+.group-icon{font-size:80px;position:absolute;right:48px;bottom:36px;opacity:.18;line-height:1;}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.3) 100%);z-index:0;}
+.photo-sec{background:var(--bg2);border-bottom:1px solid var(--border);}
+.group-photo{width:100%;max-height:480px;object-fit:cover;display:block;}
+.photo-caption{padding:14px 36px;font-size:12px;color:var(--muted);background:var(--bg2);font-style:italic;}
+.about-sec{padding:80px 0;background:var(--bg);}
+.sec-tag{display:inline-flex;align-items:center;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:4px 13px;background:var(--accent-bg);border:1px solid rgba(13,148,136,.25);border-radius:var(--r-pill);margin-bottom:18px;}
+.sec-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:var(--text);margin-bottom:22px;}
+.about-text{font-size:15px;color:var(--text-2);line-height:1.84;max-width:760px;}
+.about-text p{margin-bottom:16px;}
+.about-text p:last-child{margin-bottom:0;}
+.sectors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:32px;}
+.sector-chip{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-md);padding:14px 16px;text-align:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text-2);}
+.commitments-sec{padding:80px 0;background:var(--bg2);}
+.commitment-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.commitment-item{padding:22px 0;border-bottom:1px solid var(--border);display:flex;gap:18px;align-items:flex-start;}
+.commitment-item:last-child{border-bottom:none;padding-bottom:0;}
+.ci-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--accent);opacity:.5;flex-shrink:0;margin-top:2px;width:24px;text-align:right;}
+.ci-text{font-size:14.5px;color:var(--text);line-height:1.74;margin-bottom:7px;}
+.ci-source{font-size:11.5px;color:var(--muted);line-height:1.6;}
+.ci-source a{color:var(--blue);text-decoration:none;}
+.ci-source a:hover{text-decoration:underline;}
+.team-sec{padding:80px 0;background:var(--bg);}
+.team-placeholder{background:var(--bg2);border:1.5px dashed var(--border);border-radius:var(--r-lg);padding:52px 32px;text-align:center;}
+.team-placeholder p{font-size:14px;color:var(--muted);}
+footer{background:var(--blue-dk);padding:44px 0 36px;}
+.foot-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;text-align:center;margin-bottom:6px;}
+.foot-meta{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-bottom:20px;}
+.foot-back{display:flex;justify-content:center;}
+.foot-back a{color:rgba(255,255,255,.6);font-size:12px;text-decoration:underline;}
+.foot-back a:hover{color:#fff;}
+@media(max-width:640px){.wrap{padding:0 18px;}.group-hero{padding:60px 0 52px;}.group-icon{display:none;}.sitenav{padding:0 18px;}.eu-strip{padding:8px 18px;}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;}}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:8px;}
+.member-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:22px 18px;text-align:center;transition:box-shadow .18s,transform .18s;}
+.member-card:hover{box-shadow:0 6px 24px rgba(0,68,148,.1);transform:translateY(-2px);}
+.member-av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--blue) 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.member-name{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);line-height:1.3;}
+</style>
+</head>
+<body>
+<div class="eu-strip">
+  <div class="eu-strip-l">
+    <div class="eu-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <span class="eu-label">Co-funded by the Erasmus+ Programme of the European Union</span>
+  </div>
+  <span class="eu-strip-r">ICAM BIP Toulouse · 2026</span>
+</div>
+<nav class="sitenav">
+  <span class="nav-brand">Manifesto for Sustainable AI · ICAM BIP 2026</span>
+  <a href="manifesto.html" class="btn-back">← Back to Manifesto</a>
+</nav>
+
+<section class="group-hero">
+  <img src="../Top%20Pictures/AICompanies.jpeg" alt="" class="hero-bg" aria-hidden="true"/>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="group-num">Group 4 of 6 · Signatory</div>
+    <h1 class="group-h1">Companies<br>Using AI</h1>
+    <p class="group-tagline">Businesses across every sector deploying AI tools — committed to human oversight, transparency, worker protection, and responsible adoption.</p>
+    <div class="group-icon" aria-hidden="true">🏢</div>
+  </div>
+</section>
+
+<section class="about-sec">
+  <div class="wrap">
+    <div class="sec-tag">Who We Are</div>
+    <h2 class="sec-h2">Our Position</h2>
+    <div class="about-text">
+      <p>We represent companies using AI across every major industry. As the primary buyers and deployers of AI systems, we have significant leverage over how AI is built and governed. Our procurement decisions and sustainability requirements can drive industry-wide change.</p>
+      <p>We are not passive consumers of AI — we are responsible deployers. When we buy an AI system, we take on accountability for how it is used. We believe in human oversight for high-stakes decisions, in transparency with the people AI affects, and in ensuring that when AI changes a job, the worker affected is supported.</p>
+      <p>We want clear, predictable rules. The EU AI Act's risk-tier framework gives us a structure to work with. We are committed to applying it faithfully — not just to comply, but because responsible AI adoption protects our reputation, our workforce, and our customers.</p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-chip">Healthcare</div>
+      <div class="sector-chip">Finance</div>
+      <div class="sector-chip">Manufacturing</div>
+      <div class="sector-chip">Retail</div>
+      <div class="sector-chip">Logistics</div>
+      <div class="sector-chip">Education</div>
+      <div class="sector-chip">Insurance</div>
+      <div class="sector-chip">Legal</div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-sec">
+  <img src="../Group%20Pictures/AICompanies_grpPhoto.jpeg" alt="Companies Using AI group — ICAM BIP Toulouse 2026" class="group-photo" onerror="this.style.display='none'"/>
+  <p class="photo-caption">Companies Using AI group — ICAM BIP Toulouse 2026</p>
+</div>
+
+<section class="team-sec">
+  <div class="wrap">
+    <div class="sec-tag">The Team</div>
+    <h2 class="sec-h2">Group Members</h2>
+    <div class="team-grid">
+      <div class="member-card"><div class="member-av">GG</div><div class="member-name">Giovany Gomez</div></div>
+      <div class="member-card"><div class="member-av">LF</div><div class="member-name">Liberto Farfante</div></div>
+      <div class="member-card"><div class="member-av">PB</div><div class="member-name">Pawan Badsewal</div></div>
+      <div class="member-card"><div class="member-av">PR</div><div class="member-name">Pramithi Raroth Karimpanakkal</div></div>
+      <div class="member-card"><div class="member-av">AM</div><div class="member-name">Annie Milka</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-title">Manifesto for Sustainable AI · ICAM BIP Toulouse 2026</div>
+    <div class="foot-meta">Companies Using AI · Group 4 of 6</div>
+    <div class="foot-back"><a href="manifesto.html">← Return to the full manifesto</a></div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Manifesto for Sustainable AI — ICAM BIP Toulouse 2026, Erasmus+ Blended Intensive Programme"/>
+<meta property="og:title" content="Manifesto for Sustainable AI · ICAM BIP 2026"/>
+<meta name="theme-color" content="#004494"/>
+<title>Manifesto for Sustainable AI · ICAM BIP Toulouse 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ─────────────────────────────────── */
+:root{
+  --blue:    #004494;
+  --blue-dk: #003776;
+  --blue-md: #4073AF;
+  --blue-lt: #BFD0E4;
+  --blue-bg: #F2F5F9;
+  --blue-bg2:#E6EDF6;
+  --yellow:  #FFD617;
+  --yellow-dk:#F8AE21;
+  --bg:      #FFFFFF;
+  --bg-2:    #F5F7FA;
+  --bg-3:    #EEF3FA;
+  --text:    #1A2640;
+  --text-2:  #404040;
+  --muted:   #707070;
+  --border:  #D1DAE8;
+  --border-2:#A8BCE0;
+  --ok:      #2E7D32;
+  --ok-bg:   #E8F5E9;
+  --ok-bdr:  #81C784;
+  --danger:  #C62828;
+  --danger-bg:#FFEBEE;
+  --danger-bdr:#EF9A9A;
+  --r-sm:4px;--r-md:10px;--r-lg:14px;--r-pill:100px;
+  --ease:200ms ease;--flip:520ms cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.6;}
+button{cursor:pointer;font-family:inherit;border:none;background:none;}
+input,textarea{font-family:inherit;}
+[hidden]{display:none!important;}
+img{max-width:100%;height:auto;display:block;}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+/* ── SETUP ───────────────────────────────────── */
+#setup-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:var(--blue);color:#fff;padding:10px 20px;font-size:13px;font-weight:600;
+  align-items:center;justify-content:center;gap:14px;}
+body.setup #setup-banner{display:flex;}
+body.setup{padding-top:42px;}
+#setup-banner .x{background:rgba(255,255,255,.2);color:#fff;padding:3px 14px;
+  border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;border:none;}
+#setup-banner .x:hover{background:rgba(255,255,255,.35);}
+#gear{position:fixed;bottom:28px;right:28px;z-index:8000;width:44px;height:44px;border-radius:50%;
+  background:var(--blue);border:2px solid var(--blue-dk);color:#fff;font-size:17px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,68,148,.3);transition:all var(--ease);}
+#gear:hover{background:var(--blue-dk);transform:rotate(30deg);}
+
+/* ── TOPNAV ──────────────────────────────────── */
+.topnav{position:sticky;top:0;z-index:500;background:#fff;border-bottom:2px solid var(--blue);
+  display:flex;align-items:center;padding:0 28px;height:56px;box-shadow:0 2px 12px rgba(0,68,148,.08);}
+.nav-back{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--blue);font-weight:500;
+  cursor:pointer;padding:8px 16px 8px 0;border-right:1px solid var(--border);margin-right:16px;
+  transition:color var(--ease);background:none;border-top:none;border-bottom:none;border-left:none;}
+.nav-back:hover{color:var(--blue-dk);}
+.nav-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--blue);
+  flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* ══════════════════════════════════════════════
+   INTRO PAGE
+══════════════════════════════════════════════ */
+.eu-strip{background:var(--blue);padding:10px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.eu-strip-left{font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);}
+.eu-badge{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#fff;}
+
+.intro-hero{padding:72px 0 60px;text-align:center;position:relative;
+  background:linear-gradient(170deg,var(--blue-bg) 0%,#fff 65%);}
+.intro-hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:100px;height:3px;background:var(--yellow);border-radius:2px 2px 0 0;}
+.intro-kicker{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 16px;border-radius:var(--r-pill);margin-bottom:22px;}
+.intro-h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6.5vw,5rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.08;color:var(--blue);margin-bottom:12px;}
+.intro-h1 em{font-style:normal;color:var(--yellow-dk);}
+.intro-sub{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text-2);margin-bottom:14px;}
+.intro-tagline{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto 38px;line-height:1.75;}
+.intro-cta{background:var(--blue);color:#fff;border:none;padding:15px 42px;border-radius:var(--r-pill);
+  font-family:'Syne',sans-serif;font-size:16px;font-weight:700;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,68,148,.3);transition:all .25s ease;
+  display:inline-flex;align-items:center;gap:9px;}
+.intro-cta:hover{background:var(--blue-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,68,148,.35);}
+
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  padding:4px 12px;background:var(--blue-bg);border:1px solid var(--blue-lt);
+  border-radius:var(--r-pill);margin-bottom:18px;}
+
+/* BIP Erasmus+ section */
+.bip-section{padding:68px 0;background:#fff;border-bottom:1px solid var(--border);}
+.bip-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.bip-col h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--blue);margin-bottom:18px;}
+.bip-col p{font-size:14.5px;color:var(--text-2);line-height:1.82;margin-bottom:14px;}
+.bip-col p:last-of-type{margin-bottom:0;}
+.bip-cards{display:flex;flex-direction:column;gap:12px;}
+.bip-card{background:var(--bg-2);border:1px solid var(--border);
+  border-left:4px solid var(--blue);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 18px;}
+.bip-card strong{display:block;font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:700;color:var(--blue);margin-bottom:5px;}
+.bip-card span{font-size:13px;color:var(--text-2);line-height:1.65;}
+
+/* Debate section */
+.debate-section{padding:68px 0;background:var(--blue-bg);border-bottom:1px solid var(--border);}
+.debate-grid{display:grid;grid-template-columns:3fr 2fr;gap:52px;align-items:start;}
+.debate-col h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--blue);margin-bottom:18px;}
+.debate-col p{font-size:14.5px;color:var(--text-2);line-height:1.82;margin-bottom:14px;}
+.debate-col p:last-of-type{margin-bottom:0;}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:14px;position:relative;}
+.tl-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;
+  bottom:-6px;width:2px;background:var(--blue-lt);}
+.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:12px;font-weight:800;flex-shrink:0;z-index:1;}
+.tl-body{padding:8px 0 22px;}
+.tl-body strong{display:block;font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:700;color:var(--text);margin-bottom:4px;}
+.tl-body span{font-size:12.5px;color:var(--muted);line-height:1.6;}
+
+/* Institutions */
+.inst-section{padding:60px 0 72px;background:#fff;}
+.inst-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:800;color:var(--blue);margin-top:14px;margin-bottom:8px;}
+.inst-sub{font-size:14px;color:var(--muted);margin-bottom:36px;}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:44px;}
+.inst-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);
+  padding:28px 20px 22px;text-align:center;
+  transition:border-color var(--ease),box-shadow var(--ease),transform var(--ease);}
+.inst-card:hover{border-color:var(--blue);box-shadow:0 6px 22px rgba(0,68,148,.1);transform:translateY(-3px);}
+.inst-logo-wrap{height:56px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.inst-logo-wrap img{max-height:50px;max-width:140px;object-fit:contain;}
+.logo-fb{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--blue);
+  display:none;letter-spacing:-.02em;}
+.inst-flag-tag{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--blue);background:var(--blue-bg);
+  padding:3px 10px;border-radius:var(--r-pill);display:inline-block;margin-bottom:8px;}
+.inst-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.inst-city{font-size:12px;color:var(--muted);}
+.inst-host{font-size:11px;font-weight:600;color:var(--blue);margin-top:5px;}
+.inst-cta-row{text-align:center;padding-top:8px;}
+
+/* ══════════════════════════════════════════════
+   MANIFESTO OVERVIEW PAGE
+══════════════════════════════════════════════ */
+.m-page-hero{padding:44px 0 32px;text-align:center;border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,var(--blue-bg) 0%,#fff 100%);}
+.m-page-kicker{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 14px;border-radius:var(--r-pill);margin-bottom:16px;}
+.m-page-h1{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4.5vw,3.2rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--blue);margin-bottom:22px;}
+.m-page-h1 span{color:var(--yellow-dk);}
+.m-defs{max-width:680px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left;}
+.m-def{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;}
+.m-def dt{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--blue);
+  margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.m-def dd{font-size:13px;color:var(--text-2);line-height:1.65;}
+.m-progress{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-pill);
+  padding:14px 24px;display:flex;align-items:center;gap:18px;margin:22px 0;
+  box-shadow:0 2px 10px rgba(0,68,148,.06);}
+.m-prog-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.m-prog-track{flex:1;height:6px;background:var(--border);border-radius:99px;overflow:hidden;}
+.m-prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--blue-md));
+  border-radius:99px;transition:width 600ms cubic-bezier(.4,0,.2,1);}
+.m-prog-nums{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;white-space:nowrap;}
+.m-prog-nums .na{color:var(--blue);}
+.m-prog-nums .nt{color:var(--muted);font-size:12px;font-weight:400;}
+
+/* Group overview cards */
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));
+  gap:12px;margin-bottom:48px;}
+.ov-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);
+  padding:18px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;
+  transition:all var(--ease);position:relative;overflow:hidden;}
+.ov-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--gc,var(--blue));border-radius:0 2px 2px 0;}
+.ov-card:hover{border-color:var(--gc,var(--blue));transform:translateX(4px);
+  box-shadow:0 4px 18px rgba(0,68,148,.1);}
+.ov-icon{width:44px;height:44px;border-radius:var(--r-md);display:flex;align-items:center;
+  justify-content:center;font-size:22px;flex-shrink:0;}
+.ov-info{flex:1;min-width:0;}
+.ov-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.ov-mini-track{height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:5px;}
+.ov-mini-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--ok),#4CAF50);transition:width 400ms ease;}
+.ov-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.ov-count.done{color:var(--ok);font-weight:600;}
+.ov-arrow{color:var(--muted);font-size:22px;flex-shrink:0;transition:all var(--ease);}
+.ov-card:hover .ov-arrow{color:var(--gc,var(--blue));transform:translateX(4px);}
+
+/* Create manifesto */
+#m-create-wrap{text-align:center;padding:40px 0 68px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.create-status{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em;}
+.create-status.ready{color:var(--ok);font-weight:600;}
+.create-btn{background:var(--blue);color:#fff;border:none;padding:18px 52px;border-radius:var(--r-pill);
+  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;cursor:pointer;
+  box-shadow:0 6px 28px rgba(0,68,148,.35);transition:all .3s ease;
+  animation:btn-pulse 2.5s ease infinite;}
+@keyframes btn-pulse{0%,100%{box-shadow:0 6px 28px rgba(0,68,148,.35);}50%{box-shadow:0 10px 44px rgba(0,68,148,.55);}}
+.create-btn:hover{transform:scale(1.04);background:var(--blue-dk);}
+.create-btn:disabled{background:var(--blue-md);box-shadow:none;animation:none;opacity:.55;cursor:default;transform:none;}
+
+/* ══════════════════════════════════════════════
+   GROUP DETAIL PAGE
+══════════════════════════════════════════════ */
+.gv-visual{height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.gv-emoji{font-size:80px;position:relative;z-index:2;filter:drop-shadow(0 4px 28px rgba(0,0,0,.5));}
+.gv-fade{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff,transparent);z-index:3;}
+.gv-model{background:#070720;background-image:radial-gradient(ellipse 80% 80% at 30% 50%,rgba(92,95,238,.55) 0%,rgba(30,27,75,.5) 50%,transparent 80%),radial-gradient(rgba(99,102,241,.4) 1.5px,transparent 1.5px);background-size:100% 100%,28px 28px;}
+.gv-data{background:#1A0A00;background-image:linear-gradient(135deg,rgba(224,134,0,.5) 0%,rgba(120,60,0,.3) 50%,transparent 80%),repeating-linear-gradient(0deg,rgba(224,134,0,.08) 0,rgba(224,134,0,.08) 1px,transparent 1px,transparent 44px);background-size:100% 100%,100% 44px;}
+.gv-co{background:#001614;background-image:linear-gradient(135deg,rgba(13,148,136,.5) 0%,rgba(5,80,72,.35) 50%,transparent 80%),linear-gradient(rgba(13,148,136,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(13,148,136,.08) 1px,transparent 1px);background-size:100% 100%,46px 46px,46px 46px;}
+.gv-env{background:#011208;background-image:radial-gradient(ellipse 90% 60% at 50% 80%,rgba(26,158,71,.38) 0%,rgba(5,80,30,.3) 50%,transparent 80%),radial-gradient(ellipse 60% 100% at 20% 0%,rgba(3,100,40,.4) 0%,transparent 60%);background-size:100% 100%,100% 100%;}
+.gv-reg{background:#03091E;background-image:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(21,101,192,.55) 0%,rgba(15,50,130,.4) 50%,transparent 80%),radial-gradient(rgba(30,120,220,.2) 1px,transparent 1px);background-size:100% 100%,40px 40px;}
+
+.gd-body{padding:32px 0 80px;}
+.gd-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.gd-h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px;}
+.gd-subtitle{font-size:15px;color:var(--muted);margin-bottom:26px;}
+.gd-intro-box{background:var(--bg-2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:22px 26px;margin-bottom:30px;position:relative;}
+.gd-intro-box p{font-size:14.5px;color:var(--text-2);line-height:1.8;}
+.gd-edit-btn{position:absolute;top:12px;right:12px;display:none;background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);padding:4px 10px;font-size:11px;color:var(--blue);cursor:pointer;transition:all var(--ease);}
+body.setup .gd-edit-btn{display:block;}
+.gd-edit-btn:hover{border-color:var(--blue);background:var(--blue-bg);}
+.gd-intro-ta{display:none;width:100%;background:#fff;border:1.5px solid var(--blue);border-radius:var(--r-sm);padding:11px;color:var(--text);font-size:13px;line-height:1.7;resize:vertical;min-height:90px;outline:none;margin-top:12px;}
+.gd-intro-ta.open{display:block;}
+.gd-pts-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.gd-pts-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
+.gd-pts-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+.gd-pts-count.done{color:var(--ok);font-weight:600;}
+
+/* ══════════════════════════════════════════════
+   POINTS — FLIP SYSTEM
+══════════════════════════════════════════════ */
+.pt-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pt-item{perspective:800px;}
+.pt-inner{position:relative;transform-style:preserve-3d;transition:transform var(--flip);}
+.pt-item.agreed .pt-inner,.pt-item.disputed .pt-inner{transform:rotateX(180deg);}
+.pt-front,.pt-back{border-radius:var(--r-md);backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.pt-front{background:#fff;border:1.5px solid var(--border);padding:12px 56px 12px 14px;
+  display:flex;align-items:flex-start;gap:10px;cursor:pointer;position:relative;
+  transition:background var(--ease),border-color var(--ease);min-height:48px;}
+.pt-front:hover{border-color:var(--gc,var(--blue));background:var(--blue-bg);}
+.pt-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.pt-text{font-size:14px;color:var(--text);line-height:1.55;flex:1;}
+.pt-actions{position:absolute;top:50%;right:8px;transform:translateY(-50%);display:none;flex-direction:column;gap:3px;}
+.pt-front:hover .pt-actions,.pt-front:focus-within .pt-actions{display:flex;}
+@media(hover:none){.pt-actions{display:flex;}}
+.pt-btn{width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;border:1px solid transparent;cursor:pointer;transition:all var(--ease);font-weight:700;}
+.pt-ok {background:rgba(46,125,50,.1);color:var(--ok);border-color:rgba(46,125,50,.2);}
+.pt-ok:hover{background:rgba(46,125,50,.2);border-color:var(--ok);}
+.pt-ed {background:var(--blue-bg);color:var(--blue);border-color:var(--blue-lt);}
+.pt-ed:hover{background:var(--blue-bg2);border-color:var(--blue);}
+.pt-dis{background:rgba(198,40,40,.08);color:var(--danger);border-color:rgba(198,40,40,.18);}
+.pt-dis:hover{background:rgba(198,40,40,.18);border-color:var(--danger);}
+.pt-back{position:absolute;inset:0;transform:rotateX(180deg);border-radius:var(--r-md);
+  padding:12px 14px;display:flex;align-items:center;
+  border:1.5px solid var(--ok-bdr);background:var(--ok-bg);}
+.pt-item.disputed .pt-back{background:var(--danger-bg);border-color:var(--danger-bdr);}
+.pt-back-inner{display:none;align-items:center;gap:10px;width:100%;}
+.pt-item.agreed   .agreed-face  {display:flex;}
+.pt-item.disputed .disputed-face{display:flex;}
+.pt-status-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff;}
+.agreed-face   .pt-status-icon{background:var(--ok);}
+.disputed-face .pt-status-icon{background:var(--danger);}
+.pt-status-lbl{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;flex:1;}
+.agreed-face   .pt-status-lbl{color:var(--ok);}
+.disputed-face .pt-status-lbl{color:var(--danger);}
+.pt-undo{font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;padding:0;transition:color var(--ease);white-space:nowrap;}
+.pt-undo:hover{color:var(--text);}
+.pt-edit-wrap{display:none;flex-direction:column;gap:8px;background:var(--bg-2);border:1.5px solid var(--blue);border-radius:var(--r-md);padding:12px;margin-top:5px;}
+.pt-edit-wrap.open{display:flex;}
+.pt-edit-ta{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 11px;color:var(--text);font-size:13px;resize:vertical;min-height:58px;width:100%;outline:none;}
+.pt-edit-ta:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,68,148,.08);}
+.add-pt-btn{display:none;width:100%;margin-top:10px;padding:10px 14px;background:transparent;
+  border:1.5px dashed var(--border);border-radius:var(--r-md);color:var(--muted);
+  font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;
+  align-items:center;justify-content:center;gap:7px;cursor:pointer;transition:all var(--ease);}
+body.setup .add-pt-btn{display:flex;}
+.add-pt-btn:hover{border-color:var(--gc,var(--blue));color:var(--gc,var(--blue));background:var(--blue-bg);}
+.add-pt-form{display:none;flex-direction:column;gap:8px;margin-top:10px;padding:12px;background:var(--bg-2);border:1.5px solid var(--border);border-radius:var(--r-md);}
+.add-pt-form.open{display:flex;}
+.add-pt-input{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:8px 11px;color:var(--text);font-size:13px;width:100%;outline:none;}
+.add-pt-input:focus{border-color:var(--gc,var(--blue));}
+.form-row{display:flex;gap:8px;justify-content:flex-end;}
+.btn-s{background:var(--blue);color:#fff;padding:6px 18px;border-radius:var(--r-sm);font-size:12px;font-weight:700;border:none;cursor:pointer;transition:background var(--ease);font-family:'Syne',sans-serif;}
+.btn-s:hover{background:var(--blue-dk);}
+.btn-c{background:var(--bg-2);color:var(--muted);padding:6px 18px;border-radius:var(--r-sm);font-size:12px;border:1px solid var(--border);cursor:pointer;transition:all var(--ease);}
+.btn-c:hover{background:var(--border);color:var(--text);}
+@keyframes del-out{to{opacity:0;max-height:0;margin:0;padding:0;overflow:hidden;}}
+.pt-item.removing{animation:del-out .28s ease forwards;}
+
+/* ══════════════════════════════════════════════
+   MANIFESTO SITE VIEWER
+══════════════════════════════════════════════ */
+#m-overlay{display:none;position:fixed;inset:0;z-index:900;background:#fff;flex-direction:column;}
+#m-overlay.show{display:flex;animation:fin .35s ease;}
+@keyframes fin{from{opacity:0}to{opacity:1}}
+.m-controls{flex-shrink:0;background:#fff;border-bottom:2px solid var(--blue);
+  padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  box-shadow:0 2px 8px rgba(0,68,148,.07);}
+.m-ctrl-info{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.m-ctrl-btns{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.m-dl-site{background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-pill);
+  font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:6px;transition:background var(--ease);}
+.m-dl-site:hover{background:var(--blue-dk);}
+.m-dl{background:transparent;color:var(--blue);border:1.5px solid var(--blue);
+  padding:7px 16px;border-radius:var(--r-pill);
+  font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:5px;transition:all var(--ease);}
+.m-dl:hover{background:var(--blue-bg);}
+.m-close{padding:7px 16px;border-radius:var(--r-pill);background:var(--bg-2);
+  border:1px solid var(--border);color:var(--text);font-size:12px;font-family:'Syne',sans-serif;
+  font-weight:600;cursor:pointer;transition:background var(--ease);}
+.m-close:hover{background:var(--border);}
+#m-frame{flex:1;border:none;width:100%;display:block;}
+/* ── REDUCED MOTION ──────────────────────────── */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:760px){
+  .bip-grid,.debate-grid{grid-template-columns:1fr;gap:28px;}
+  .m-defs{grid-template-columns:1fr;}
+  .inst-grid{grid-template-columns:1fr 1fr;}
+  .gv-visual{height:180px;}.gv-emoji{font-size:60px;}
+  .groups-grid{grid-template-columns:1fr;}
+  .m-doc{padding:12px 18px 60px;}
+  .m-progress{flex-direction:column;align-items:flex-start;border-radius:var(--r-lg);}
+  .eu-strip{flex-direction:column;gap:6px;text-align:center;}
+  .topnav{padding:0 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SETUP BANNER -->
+<div id="setup-banner" role="status">
+  ⚙️ Setup Mode — only you see this. Enter each group's content.
+  <button class="x" onclick="toggleSetup()">Exit Setup</button>
+</div>
+<button id="gear" onclick="toggleSetup()" title="Setup Mode (Ctrl+Shift+S)" aria-label="Toggle setup mode">⚙</button>
+
+<!-- ════════════════════════════════════════════
+     VIEW: INTRO
+════════════════════════════════════════════ -->
+<div id="v-intro">
+
+  <div class="eu-strip">
+    <span class="eu-strip-left">Co-funded by the Erasmus+ Programme of the European Union</span>
+    <div class="eu-badge">🇪🇺 Erasmus+ BIP 2026</div>
+  </div>
+
+  <section class="intro-hero" aria-label="Event hero">
+    <div class="wrap" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="intro-kicker">ICAM BIP · Toulouse · June–July 2026</div>
+      <h1 class="intro-h1">AI <em>Sustainability</em><br>Debate &amp; Manifesto</h1>
+      <p class="intro-sub">Toulouse, France &nbsp;·&nbsp; 30 June – 1 July 2026</p>
+      <p class="intro-tagline">Five stakeholder groups. Five perspectives on the future of AI in Europe. One structured debate. One jointly agreed manifesto.</p>
+      <button class="intro-cta" onclick="window.location.href='manifesto.html'">View the Manifesto →</button>
+    </div>
+  </section>
+
+  <!-- ERASMUS+ BIP EXPLANATION -->
+  <section class="bip-section" aria-label="About Erasmus+ and BIP">
+    <div class="wrap">
+      <div class="bip-grid">
+        <div class="bip-col">
+          <div class="section-tag">About the Programme</div>
+          <h2>What is Erasmus+ and a Blended Intensive Programme?</h2>
+          <p><strong>Erasmus+</strong> is the European Union's flagship programme for education, training, youth, and sport. Launched in 1987, it has supported over 13 million people in studying, training, teaching, or volunteering abroad across Europe and beyond. With a budget of €26.2 billion for 2021–2027, it operates in all EU member states and dozens of partner countries worldwide.</p>
+          <p>Its mission: build a more connected, open, and skilled Europe by enabling people to learn across national borders — regardless of background. Erasmus+ funds everything from full semester exchanges and joint degrees to targeted collaborative projects.</p>
+          <p>A <strong>Blended Intensive Programme (BIP)</strong> is a specific Erasmus+ format introduced in the 2021–2027 cycle. It combines in-person mobility — students travel to a partner university in another country — with a mandatory online collaboration phase, creating a hybrid learning experience more accessible than a full semester abroad but more immersive than a purely digital course.</p>
+          <p>To qualify as an official Erasmus+ BIP, a programme must involve participants from at least three different countries. Students receive an Erasmus+ grant to help cover travel and living costs, making international academic collaboration financially accessible across all backgrounds.</p>
+        </div>
+        <div class="bip-col">
+          <div class="bip-cards">
+            <div class="bip-card">
+              <strong>🌍 What makes BIPs different?</strong>
+              <span>BIPs are short — typically 1 to 4 weeks — but highly focused. They bring students from different countries together to tackle a shared real-world challenge in person: rapid-fire international collaboration that a semester exchange cannot replicate.</span>
+            </div>
+            <div class="bip-card">
+              <strong>📅 Duration of this BIP</strong>
+              <span>Three intensive days in Toulouse: one day of preparation and research (30 June), then the structured debate and live manifesto creation on 1 July. Students from France, Spain, Belgium, and Ireland work together throughout.</span>
+            </div>
+            <div class="bip-card">
+              <strong>🎓 Who attends?</strong>
+              <span>Engineering and business students from four partner universities — ICAM, Universidad Loyola, Université de Namur, and NCI Ireland — each bringing their national and disciplinary perspective to the debate table.</span>
+            </div>
+            <div class="bip-card">
+              <strong>⚡ Why AI Sustainability?</strong>
+              <span>AI systems consume enormous quantities of energy, water, and rare materials. As AI adoption accelerates across Europe, questions about its environmental, social, and regulatory costs are urgent and unresolved — exactly the kind of challenge BIPs are designed for.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS THE DEBATE? -->
+  <section class="debate-section" aria-label="About the debate">
+    <div class="wrap">
+      <div class="debate-grid">
+        <div class="debate-col">
+          <div class="section-tag">The Activity</div>
+          <h2>What is this debate?</h2>
+          <p>This BIP takes the form of a structured stakeholder negotiation. Five teams — each representing a distinct group in the global AI ecosystem — research their stakeholder's real-world position on sustainable AI, then meet in a formal debate to present arguments, challenge each other, and negotiate toward a shared document.</p>
+          <p>The five groups are: <strong>AI Model Providers</strong> (companies building large-scale AI systems), <strong>Data Center Companies</strong> (infrastructure providers who power AI at scale), <strong>Companies Using AI</strong> (businesses across all sectors deploying AI tools), <strong>Environmentalists</strong> (scientists and advocates tracking AI's ecological footprint), and <strong>EU Regulators</strong> (the policymakers shaping Europe's legal framework for AI).</p>
+          <p>Each group develops a set of principles they want enshrined in a joint manifesto. The debate tests those principles against the perspectives of every other group — forcing negotiation, compromise, and ultimately consensus. When all five groups agree on all points, this site generates the live manifesto: a real, jointly authored document on what responsible and sustainable AI looks like in Europe.</p>
+        </div>
+        <div class="debate-col">
+          <div class="section-tag" style="margin-bottom:22px;">How it unfolds</div>
+          <div class="timeline" role="list">
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot">1</div>
+              <div class="tl-body">
+                <strong>Tuesday 30 June — Preparation</strong>
+                <span>Teams form, research their stakeholder, define their position, and submit manifesto points. This site is built and prepared for debate day.</span>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot">2</div>
+              <div class="tl-body">
+                <strong>Wednesday 1 July — Debate Opens (9:00)</strong>
+                <span>Each group presents their position. Points are discussed one by one and marked agreed or disputed in real time on this site.</span>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot">3</div>
+              <div class="tl-body">
+                <strong>Negotiation &amp; Revision</strong>
+                <span>Disputed points are revised through open negotiation until all groups can agree. The progress bar reflects the live state of consensus.</span>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot">4</div>
+              <div class="tl-body">
+                <strong>Manifesto Signed (by 12:00)</strong>
+                <span>When every point is agreed, the Create Manifesto button activates and the document is generated live — ready to download and publish.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTIONS -->
+  <section class="inst-section" aria-label="Participating institutions">
+    <div class="wrap">
+      <div class="section-tag">Partner Universities</div>
+      <h2>Participating Institutions</h2>
+      <p class="inst-sub">Four universities from four European countries, united by Erasmus+ for this joint programme.</p>
+      <div class="inst-grid">
+
+        <div class="inst-card">
+          <div class="inst-logo-wrap">
+            <img src="https://www.icam.fr/wp-content/themes/icam/img/logo.svg" alt="ICAM logo"
+                 onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
+            <span class="logo-fb">ICAM</span>
+          </div>
+          <div class="inst-flag-tag">🇫🇷 France</div>
+          <div class="inst-name">ICAM</div>
+          <div class="inst-city">Institut Catholique d'Arts et Métiers</div>
+          <div class="inst-city">Toulouse</div>
+          <div class="inst-host">Host Institution</div>
+        </div>
+
+        <div class="inst-card">
+          <div class="inst-logo-wrap">
+            <img src="https://www.uloyola.es/templates/v6/images/isologo_loyola_principal.svg" alt="Universidad Loyola logo"
+                 onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
+            <span class="logo-fb">Loyola</span>
+          </div>
+          <div class="inst-flag-tag">🇪🇸 Spain</div>
+          <div class="inst-name">Universidad Loyola</div>
+          <div class="inst-city">Seville / Córdoba</div>
+        </div>
+
+        <div class="inst-card">
+          <div class="inst-logo-wrap">
+            <img src="https://www.unamur.be/themes/custom/unamur_theme/logo.svg" alt="Université de Namur logo"
+                 onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
+            <span class="logo-fb">UNamur</span>
+          </div>
+          <div class="inst-flag-tag">🇧🇪 Belgium</div>
+          <div class="inst-name">Université de Namur</div>
+          <div class="inst-city">Namur</div>
+        </div>
+
+        <div class="inst-card">
+          <div class="inst-logo-wrap">
+            <img src="https://www.ncirl.ie/Portals/_default/Skins/NCIRL/Images/logo-NCI.png" alt="National College of Ireland logo"
+                 onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
+            <span class="logo-fb">NCI</span>
+          </div>
+          <div class="inst-flag-tag">🇮🇪 Ireland</div>
+          <div class="inst-name">National College of Ireland</div>
+          <div class="inst-city">Dublin</div>
+        </div>
+
+      </div>
+      <div class="inst-cta-row">
+        <button class="intro-cta" onclick="window.location.href='manifesto.html'">Enter the Manifesto →</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /v-intro -->
+
+<!-- ════════════════════════════════════════════
+     VIEW: MANIFESTO OVERVIEW
+════════════════════════════════════════════ -->
+<div id="v-manifesto" hidden>
+  <nav class="topnav" aria-label="Site navigation">
+    <button class="nav-back" onclick="showView('intro')">← Introduction</button>
+    <span class="nav-title">Manifesto for Sustainable AI</span>
+  </nav>
+  <div class="wrap">
+    <header class="m-page-hero">
+      <div class="m-page-kicker">ICAM BIP Toulouse 2026</div>
+      <h1 class="m-page-h1">Manifesto for <span>Sustainable AI</span></h1>
+      <dl class="m-defs">
+        <div class="m-def">
+          <dt>📜 What is a Manifesto?</dt>
+          <dd>A public declaration of intentions, jointly agreed after deliberation. Not a statement — a commitment, signed by all parties.</dd>
+        </div>
+        <div class="m-def">
+          <dt>⚡ What is Sustainable AI?</dt>
+          <dd>AI developed and deployed in ways that are environmentally responsible, socially equitable, economically inclusive, and governed with clear accountability.</dd>
+        </div>
+      </dl>
+    </header>
+    <div class="m-progress" role="status" aria-live="polite">
+      <span class="m-prog-label">Overall Progress</span>
+      <div class="m-prog-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="m-prog-fill" id="prog-fill"></div>
+      </div>
+      <div class="m-prog-nums"><span class="na" id="prog-a">0</span><span class="nt"> / <span id="prog-t">0</span> agreed</span></div>
+    </div>
+    <section aria-label="Group positions">
+      <div class="groups-grid" id="groups-grid"></div>
+    </section>
+    <div id="m-create-wrap" aria-live="polite">
+      <p class="create-status" id="create-status">Add and agree on points to generate the manifesto</p>
+      <button class="create-btn" id="create-btn" onclick="openManifesto()" disabled>View Manifesto</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     VIEW: GROUP DETAIL
+════════════════════════════════════════════ -->
+<div id="v-group" hidden>
+  <nav class="topnav" aria-label="Group navigation">
+    <button class="nav-back" onclick="showView('manifesto')">← All Groups</button>
+    <span class="nav-title" id="gd-nav-title"></span>
+  </nav>
+  <div class="gv-visual" id="gd-visual" aria-hidden="true">
+    <div class="gv-emoji" id="gd-emoji"></div>
+    <div class="gv-fade"></div>
+  </div>
+  <div class="gd-body">
+    <div class="wrap">
+      <div class="gd-num" id="gd-num"></div>
+      <h1 class="gd-h1" id="gd-h1"></h1>
+      <p class="gd-subtitle" id="gd-subtitle"></p>
+      <div class="gd-intro-box">
+        <p id="gd-intro-p"></p>
+        <button class="gd-edit-btn" onclick="openIntroEdit()">✎ Edit</button>
+        <textarea class="gd-intro-ta" id="gd-intro-ta"></textarea>
+        <div class="form-row" id="gd-intro-row" style="display:none;margin-top:8px;">
+          <button class="btn-c" onclick="cancelIntroEdit()">Cancel</button>
+          <button class="btn-s" onclick="saveIntroEdit()">Save</button>
+        </div>
+      </div>
+      <div class="gd-pts-header">
+        <span class="gd-pts-title">Manifesto Points</span>
+        <span class="gd-pts-count" id="gd-count"></span>
+      </div>
+      <ul class="pt-list" id="gd-pt-list" aria-label="Manifesto points"></ul>
+      <button class="add-pt-btn" id="gd-add-btn" onclick="showAdd()">+ add point</button>
+      <div class="add-pt-form" id="gd-add-form">
+        <input class="add-pt-input" id="gd-add-in" placeholder="Type the point…"/>
+        <div class="form-row">
+          <button class="btn-c" onclick="hideAdd()">Cancel</button>
+          <button class="btn-s" onclick="doAdd()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MANIFESTO SITE VIEWER
+════════════════════════════════════════════ -->
+<div id="m-overlay" role="dialog" aria-modal="true" aria-label="Manifesto for Sustainable AI 2026">
+  <div class="m-controls">
+    <span class="m-ctrl-info">Manifesto for Sustainable AI · ICAM BIP 2026</span>
+    <div class="m-ctrl-btns">
+      <button class="m-dl" onclick="printManifestoSite()">↓ Download PDF</button>
+      <button class="m-dl-site" onclick="downloadManifestoSite()">↓ Download Website</button>
+      <button class="m-close" onclick="closeManifesto()">← Back to Editor</button>
+    </div>
+  </div>
+  <iframe id="m-frame" title="Manifesto for Sustainable AI 2026"></iframe>
+</div>
+
+<script>
+const GROUPS=[
+  {id:'model-providers',  name:'AI Model Providers',   icon:'🧠', color:'#5C5FEE', visual:'gv-model',
+   subtitle:'The builders of foundational AI systems',
+   intro:'AI Model Providers are the companies and organisations that research, train, and distribute large-scale AI systems — the models that power applications worldwide. Their decisions on energy efficiency, openness, safety, and pricing determine the direction and footprint of the entire AI industry. As the architects of the most powerful AI systems ever built, they bear a unique responsibility in the sustainability conversation.'},
+  {id:'data-centers',     name:'Data Center Companies', icon:'🏭', color:'#D97706', visual:'gv-data',
+   subtitle:'The infrastructure behind every AI request',
+   intro:'Data Center Companies provide the physical foundation that makes AI possible — the servers, networking, cooling systems, and power supply that run AI workloads at massive scale. As demand for AI compute grows exponentially, so does the environmental footprint: energy consumption, water use for cooling, land occupation, and carbon emissions from construction. Their investment decisions shape whether AI scales sustainably.'},
+  {id:'companies',        name:'Companies Using AI',    icon:'🏢', color:'#0D9488', visual:'gv-co',
+   subtitle:'Businesses adopting AI across every sector',
+   intro:'Companies using AI span every major industry — healthcare, finance, manufacturing, retail, logistics, and education. They adopt AI tools to improve efficiency, reduce costs, and stay competitive. As the primary buyers and deployers of AI systems, they have significant leverage over how AI is built and governed. Their procurement decisions and sustainability requirements can drive industry-wide change.'},
+  {id:'environmentalists',name:'Environmentalists',    icon:'🌍', color:'#16A34A', visual:'gv-env',
+   subtitle:'Guardians of the planet in the age of AI',
+   intro:'Environmentalists — scientists, climate advocates, and sustainability researchers — monitor the ecological impact of the AI industry with rigour and urgency. AI infrastructure is already responsible for a significant and growing share of global electricity consumption and water use. As AI systems grow more powerful and widely deployed, these advocates call for binding environmental commitments and a structural shift to renewable energy across the AI supply chain.'},
+  {id:'regulators',       name:'EU Regulators',         icon:'⚖️', color:'#1565C0', visual:'gv-reg',
+   subtitle:'Setting the legal framework for AI in Europe',
+   intro:'EU Regulators create and enforce the legal framework governing AI across Europe. Through instruments like the EU AI Act, the Green Deal, and the Data Act, they must balance competing objectives: enabling innovation and competitiveness while protecting citizens, workers, the environment, and democratic institutions. As the ultimate rule-setters in the world\'s most ambitious AI regulatory environment, they hold both the greatest responsibility and the widest authority.'},
+];
+
+const PLACEHOLDER='Awaiting group submission — add points via ⚙ Setup Mode';
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const mkPt=t=>({id:uid(),text:t,status:'pending'});
+function defaultState(){return GROUPS.map(g=>({...g,customIntro:'',points:[mkPt(PLACEHOLDER)]}));}
+function load(){try{const s=localStorage.getItem('aisus-v5');if(s)return JSON.parse(s);}catch(_){}return defaultState();}
+function save(){localStorage.setItem('aisus-v5',JSON.stringify(state));}
+
+let state=load(),setupMode=false,activeGid=null;
+
+function showView(name,gid){
+  ['intro','manifesto','group'].forEach(v=>{document.getElementById('v-'+v).hidden=(v!==name);});
+  window.scrollTo({top:0,behavior:'instant'});
+  if(name==='manifesto'){renderCards();refreshProgress();}
+  if(name==='group'&&gid){activeGid=gid;renderGroupDetail(gid);}
+}
+
+function renderCards(){
+  const grid=document.getElementById('groups-grid');grid.innerHTML='';
+  state.forEach(g=>{
+    const agr=g.points.filter(p=>p.status==='agreed').length,tot=g.points.length;
+    const pct=tot>0?(agr/tot)*100:0,done=tot>0&&agr===tot;
+    const c=document.createElement('div');c.className='ov-card';
+    c.style.setProperty('--gc',g.color);
+    c.setAttribute('role','button');c.setAttribute('tabindex','0');
+    c.innerHTML=`<div class="ov-icon" style="background:${g.color}18;color:${g.color}">${g.icon}</div>
+      <div class="ov-info">
+        <div class="ov-name">${esc(g.name)}</div>
+        <div class="ov-mini-track"><div class="ov-mini-fill" style="width:${pct}%"></div></div>
+        <div class="ov-count${done?' done':''}">${agr}/${tot} agreed${done?' ✓':''}</div>
+      </div>
+      <div class="ov-arrow" aria-hidden="true">›</div>`;
+    c.addEventListener('click',()=>showView('group',g.id));
+    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showView('group',g.id);}});
+    grid.appendChild(c);
+  });
+}
+
+function renderGroupDetail(gid){
+  const g=state.find(x=>x.id===gid);if(!g)return;
+  const idx=GROUPS.findIndex(x=>x.id===gid);
+  document.getElementById('gd-nav-title').textContent=g.name;
+  document.getElementById('gd-visual').className=`gv-visual ${g.visual}`;
+  document.getElementById('gd-emoji').textContent=g.icon;
+  document.getElementById('gd-num').innerHTML=`<span style="color:${g.color}">Group ${idx+1} of ${GROUPS.length}</span>`;
+  document.getElementById('gd-h1').textContent=g.name;
+  document.getElementById('gd-h1').style.color=g.color;
+  document.getElementById('gd-subtitle').textContent=g.subtitle||'';
+  const t=g.customIntro||g.intro;
+  document.getElementById('gd-intro-p').textContent=t;
+  document.getElementById('gd-intro-ta').value=t;
+  document.getElementById('gd-add-btn').style.setProperty('--gc',g.color);
+  renderPts(gid);
+}
+
+function renderPts(gid){
+  const g=state.find(x=>x.id===gid),list=document.getElementById('gd-pt-list');
+  list.innerHTML='';g.points.forEach(p=>list.appendChild(mkPtEl(g,p)));refreshCount(gid);
+}
+
+function mkPtEl(g,p){
+  const li=document.createElement('li');
+  li.className='pt-item'+(p.status==='agreed'?' agreed':(p.status==='disputed'?' disputed':''));
+  li.dataset.pid=p.id;li.dataset.gid=g.id;
+  li.innerHTML=`
+    <div class="pt-inner">
+      <div class="pt-front" tabindex="0" role="button" style="--gc:${g.color}">
+        <div class="pt-dot" style="background:${g.color}" aria-hidden="true"></div>
+        <span class="pt-text">${esc(p.text)}</span>
+        <div class="pt-actions">
+          <button class="pt-btn pt-ok"  onclick="agree('${g.id}','${p.id}')"    title="Agree">✓</button>
+          <button class="pt-btn pt-ed"  onclick="startEdit('${g.id}','${p.id}')" title="Edit">✎</button>
+          <button class="pt-btn pt-dis" onclick="disagree('${g.id}','${p.id}')" title="Disagree">✗</button>
+        </div>
+      </div>
+      <div class="pt-back">
+        <div class="pt-back-inner agreed-face">
+          <div class="pt-status-icon">✓</div>
+          <span class="pt-status-lbl">Agreed</span>
+          <button class="pt-undo" onclick="resetPt('${g.id}','${p.id}')">undo</button>
+        </div>
+        <div class="pt-back-inner disputed-face">
+          <div class="pt-status-icon">!</div>
+          <span class="pt-status-lbl">Disputed</span>
+          <button class="pt-undo" onclick="resetPt('${g.id}','${p.id}')">undo</button>
+        </div>
+      </div>
+    </div>
+    <div class="pt-edit-wrap" id="ed-${p.id}">
+      <textarea class="pt-edit-ta" id="ed-ta-${p.id}">${esc(p.text)}</textarea>
+      <div class="form-row">
+        <button class="btn-c" onclick="cancelEdit('${p.id}')">Cancel</button>
+        <button class="btn-s" onclick="saveEdit('${g.id}','${p.id}')">Save &amp; Re-vote</button>
+      </div>
+    </div>`;
+  li.querySelector('.pt-front').addEventListener('keydown',e=>{
+    if((e.key==='Enter'||e.key===' ')&&e.target===e.currentTarget){e.preventDefault();agree(g.id,p.id);}
+  });
+  return li;
+}
+
+const findG=gid=>state.find(g=>g.id===gid);
+const findPt=(gid,pid)=>{const g=findG(gid);return g&&g.points.find(p=>p.id===pid);};
+const qPt=(gid,pid)=>document.querySelector(`.pt-item[data-gid="${gid}"][data-pid="${pid}"]`);
+
+function setStatus(gid,pid,status){
+  const pt=findPt(gid,pid);if(!pt)return;
+  pt.status=status;save();
+  const li=qPt(gid,pid);
+  if(li){li.classList.remove('agreed','disputed');if(status!=='pending')li.classList.add(status);}
+  refreshCount(gid);refreshProgress();
+}
+const agree=   (gid,pid)=>setStatus(gid,pid,'agreed');
+const disagree=(gid,pid)=>setStatus(gid,pid,'disputed');
+const resetPt= (gid,pid)=>setStatus(gid,pid,'pending');
+
+function startEdit(gid,pid){const w=document.getElementById('ed-'+pid),t=document.getElementById('ed-ta-'+pid);if(w){w.classList.add('open');t&&t.focus();}}
+function cancelEdit(pid){const w=document.getElementById('ed-'+pid);if(w)w.classList.remove('open');}
+function saveEdit(gid,pid){
+  const t=document.getElementById('ed-ta-'+pid),txt=t?t.value.trim():'';if(!txt)return;
+  const pt=findPt(gid,pid);if(!pt)return;
+  pt.text=txt;pt.status='pending';save();renderPts(gid);refreshProgress();
+}
+function showAdd(){const f=document.getElementById('gd-add-form'),i=document.getElementById('gd-add-in');if(f){f.classList.add('open');i&&i.focus();}}
+function hideAdd(){const f=document.getElementById('gd-add-form'),i=document.getElementById('gd-add-in');if(f){f.classList.remove('open');if(i)i.value='';}}
+function doAdd(){
+  const i=document.getElementById('gd-add-in'),txt=i?i.value.trim():'';if(!txt||!activeGid)return;
+  const g=findG(activeGid);if(!g)return;
+  g.points.push(mkPt(txt));save();renderPts(activeGid);refreshProgress();hideAdd();
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.id==='gd-add-in')doAdd();
+  if(e.key==='Escape')closeManifesto();
+  if(e.ctrlKey&&e.shiftKey&&e.key==='S'){e.preventDefault();toggleSetup();}
+});
+
+function openIntroEdit(){
+  const ta=document.getElementById('gd-intro-ta'),row=document.getElementById('gd-intro-row'),p=document.getElementById('gd-intro-p');
+  ta.classList.add('open');row.style.display='flex';p.style.opacity='.3';ta.focus();
+}
+function cancelIntroEdit(){
+  const ta=document.getElementById('gd-intro-ta'),row=document.getElementById('gd-intro-row'),p=document.getElementById('gd-intro-p'),g=findG(activeGid);
+  if(g)ta.value=g.customIntro||g.intro;ta.classList.remove('open');row.style.display='none';p.style.opacity='1';
+}
+function saveIntroEdit(){
+  const ta=document.getElementById('gd-intro-ta'),txt=ta?ta.value.trim():'';if(!txt||!activeGid)return;
+  const g=findG(activeGid);if(!g)return;g.customIntro=txt;save();
+  document.getElementById('gd-intro-p').textContent=txt;cancelIntroEdit();
+}
+
+function refreshCount(gid){
+  if(activeGid!==gid)return;const g=findG(gid);if(!g)return;
+  const tot=g.points.length,agr=g.points.filter(p=>p.status==='agreed').length;
+  const el=document.getElementById('gd-count');if(!el)return;
+  el.textContent=`${agr} / ${tot} agreed`;el.className='gd-pts-count'+(agr===tot&&tot>0?' done':'');
+}
+function refreshProgress(){
+  const all=state.flatMap(g=>g.points),tot=all.length,agr=all.filter(p=>p.status==='agreed').length;
+  const pct=tot>0?(agr/tot)*100:0;
+  const fill=document.getElementById('prog-fill');if(fill)fill.style.width=`${pct}%`;
+  const bar=document.querySelector('.m-prog-track');if(bar)bar.setAttribute('aria-valuenow',Math.round(pct));
+  const ea=document.getElementById('prog-a'),et=document.getElementById('prog-t');
+  if(ea)ea.textContent=agr;if(et)et.textContent=tot;
+  const allDone=tot>0&&agr===tot;
+  const statusEl=document.getElementById('create-status');
+  const btn=document.getElementById('create-btn');
+  if(statusEl){
+    if(agr===0){statusEl.textContent='Agree on points during the debate to build the manifesto';statusEl.className='create-status';}
+    else if(allDone){statusEl.textContent=`All ${tot} points agreed — manifesto is ready to finalise`;statusEl.className='create-status ready';}
+    else{statusEl.textContent=`${agr} of ${tot} points agreed across all groups`;statusEl.className='create-status';}
+  }
+  if(btn){
+    btn.disabled=agr===0;
+    btn.textContent=allDone?'✦ Create Final Manifesto':'View Manifesto Preview';
+  }
+}
+
+function toggleSetup(){setupMode=!setupMode;document.body.classList.toggle('setup',setupMode);}
+
+function openManifesto(){
+  const html=generateManifestoSite();
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const frame=document.getElementById('m-frame');
+  if(frame._prevUrl)URL.revokeObjectURL(frame._prevUrl);
+  frame._prevUrl=url;
+  frame.src=url;
+  document.getElementById('m-overlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeManifesto(){
+  document.getElementById('m-overlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function printManifestoSite(){
+  const f=document.getElementById('m-frame');
+  if(f&&f.contentWindow)f.contentWindow.print();
+}
+function downloadManifestoSite(){
+  const html=generateManifestoSite();
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='manifesto-sustainable-ai-2026.html';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function generateManifestoSite(){
+  const date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const allPrinciples=state.flatMap(g=>g.points.filter(p=>p.status==='agreed'));
+  const n=allPrinciples.length;
+  const hasAll=state.every(g=>g.points.some(p=>p.status==='agreed'));
+  if(!n)return`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><title>Manifesto</title></head><body style="font-family:sans-serif;padding:60px;text-align:center;color:#374151"><p style="font-size:18px">No principles have been agreed yet.</p></body></html>`;
+  const stars='★★★★★★★★★★★★'.split('').map(s=>`<span>${esc(s)}</span>`).join('');
+  const principlesHTML=allPrinciples.map((p,i)=>`
+      <div class="principle">
+        <div class="p-num-col"><span>${String(i+1).padStart(2,'0')}</span></div>
+        <p class="p-text">${esc(p.text)}</p>
+      </div>`).join('');
+  return`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Manifesto for Sustainable AI — ICAM BIP Toulouse 2026. ${n} principles agreed by five AI stakeholder groups."/>
+<meta property="og:title" content="Manifesto for Sustainable AI · ICAM BIP 2026"/>
+<meta property="og:description" content="${n} principles agreed through live debate at ICAM BIP Toulouse, co-funded by Erasmus+."/>
+<meta name="theme-color" content="#004494"/>
+<title>Manifesto for Sustainable AI · ICAM BIP Toulouse 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--blue:#004494;--blue-dk:#003776;--blue-lt:#BFD0E4;--blue-bg:#F2F5F9;
+  --yellow:#FFD617;--text:#111827;--text-2:#374151;--muted:#6B7280;
+  --border:#E5E7EB;--bg:#FFFFFF;--bg2:#F9FAFB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+/* EU STRIP */
+.eu-strip{background:var(--blue);padding:9px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.eu-strip-l{display:flex;align-items:center;gap:9px;}
+.eu-stars{display:flex;gap:3px;}
+.eu-stars span{color:var(--yellow);font-size:9px;line-height:1;}
+.eu-lab{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.06em;}
+.eu-strip-r{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.06em;}
+/* STICKY NAV */
+.sitenav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid var(--blue);
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;
+  box-shadow:0 2px 12px rgba(0,68,148,.08);}
+.nav-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.btn-pdf{background:var(--blue);color:#fff;border:none;padding:9px 22px;border-radius:100px;
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;transition:background .2s ease;white-space:nowrap;}
+.btn-pdf:hover{background:var(--blue-dk);}
+/* HERO */
+.hero{background:var(--blue);padding:84px 0 72px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-120px;top:-120px;width:480px;height:480px;border-radius:50%;border:70px solid rgba(255,255,255,.03);}
+.hero::after{content:'';position:absolute;left:-80px;bottom:-100px;width:380px;height:380px;border-radius:50%;border:50px solid rgba(255,255,255,.025);}
+.hero-inner{position:relative;z-index:1;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:28px;}
+.hero-tag::before,.hero-tag::after{content:'';display:inline-block;width:24px;height:1px;background:rgba(255,255,255,.25);}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,7vw,5.4rem);
+  font-weight:800;letter-spacing:-.035em;line-height:1.03;color:#fff;margin-bottom:18px;}
+.hero-rule{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.hero-rule-line{height:3px;width:64px;background:var(--yellow);border-radius:2px;}
+.hero-rule-count{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.62);max-width:540px;line-height:1.74;margin-bottom:44px;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;}
+.hero-chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:8px 18px;}
+.hero-chip .lbl{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);display:block;margin-bottom:2px;}
+.hero-chip .val{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.9);}
+/* PREAMBLE */
+.preamble{padding:72px 0;background:var(--bg2);border-bottom:1px solid var(--border);}
+.preamble-inner{display:grid;grid-template-columns:5fr 8fr;gap:64px;align-items:start;}
+.sec-tag{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--blue);font-weight:600;display:block;margin-bottom:14px;}
+.sec-hed{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.3rem);
+  font-weight:800;letter-spacing:-.025em;line-height:1.12;color:var(--text);}
+.preamble-body p{font-size:14.5px;color:var(--text-2);line-height:1.88;margin-bottom:16px;}
+.preamble-body p:last-child{margin-bottom:0;}
+.preamble-quote{border-left:3px solid var(--blue);padding:16px 22px;background:#fff;border-radius:0 8px 8px 0;margin-top:22px;}
+.preamble-quote p{font-size:14.5px;font-style:italic;color:var(--text-2);line-height:1.82;}
+/* PRINCIPLES */
+.principles-sec{padding:88px 0;background:#fff;}
+.principles-head{text-align:center;margin-bottom:68px;}
+.principles-head .badge{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:600;
+  background:var(--blue-bg);border:1px solid var(--blue-lt);padding:5px 16px;border-radius:100px;margin-bottom:16px;}
+.principles-head h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:800;letter-spacing:-.04em;line-height:1.04;color:var(--text);margin-bottom:10px;}
+.principles-head p{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto;}
+.principles-count{display:inline-flex;align-items:baseline;gap:10px;margin-top:24px;
+  background:var(--blue);color:#fff;padding:10px 26px;border-radius:100px;}
+.principles-count .num{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;line-height:1;}
+.principles-count .lbl{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;opacity:.68;}
+.principles-list{max-width:840px;margin:0 auto;}
+.principle{display:grid;grid-template-columns:72px 1fr;align-items:start;
+  padding:34px 0;border-bottom:1px solid var(--border);
+  opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+.principle:last-child{border-bottom:none;}
+.principle.visible{opacity:1;transform:none;}
+.principle:hover{background:var(--bg2);}
+.p-num-col{padding:4px 20px 0 6px;display:flex;align-items:flex-start;justify-content:flex-end;}
+.p-num-col span{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;
+  color:var(--blue);opacity:.18;letter-spacing:-.02em;line-height:1;}
+.p-text{font-family:'Inter',sans-serif;font-size:16.5px;color:var(--text);line-height:1.7;padding-right:6px;}
+/* ABOUT */
+.about-sec{padding:80px 0;background:var(--blue);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start;}
+.a-tag{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--yellow);font-weight:600;display:block;margin-bottom:14px;}
+.a-hed{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);
+  font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff;margin-bottom:18px;}
+.a-body p{font-size:14px;color:rgba(255,255,255,.68);line-height:1.86;margin-bottom:14px;}
+.a-body p:last-child{margin-bottom:0;}
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:14px;position:relative;}
+.step:not(:last-child)::after{content:'';position:absolute;left:17px;top:36px;bottom:-6px;width:2px;background:rgba(255,255,255,.1);}
+.step-dot{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--yellow);}
+.step-body{padding:7px 0 24px;}
+.step-body strong{display:block;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;}
+.step-body span{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.62;}
+/* INSTITUTIONS */
+.inst-sec{padding:72px 0;background:var(--bg2);border-top:1px solid var(--border);}
+.inst-head{text-align:center;margin-bottom:44px;}
+.inst-head .badge{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:600;
+  background:#fff;border:1px solid var(--blue-lt);padding:5px 16px;border-radius:100px;margin-bottom:14px;}
+.inst-head h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.025em;color:var(--text);}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.icard{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 20px 22px;text-align:center;
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;}
+.icard:hover{border-color:var(--blue);box-shadow:0 6px 22px rgba(0,68,148,.1);transform:translateY(-3px);}
+.icard-logo{height:54px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.icard-logo img{max-height:48px;max-width:130px;object-fit:contain;}
+.icard-logo .fb{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--blue);display:none;}
+.icard-flag{font-size:10px;font-family:'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue);background:var(--blue-bg);padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:8px;}
+.icard-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.icard-city{font-size:12px;color:var(--muted);line-height:1.5;}
+.icard-host{font-size:11px;font-weight:600;color:var(--blue);margin-top:5px;}
+/* FOOTER */
+footer{background:var(--blue);padding:52px 0 44px;}
+.foot-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
+.foot-stars{display:flex;gap:4px;margin-bottom:2px;}
+.foot-stars span{color:var(--yellow);font-size:9px;line-height:1;}
+.foot-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.foot-sub{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.04em;}
+.foot-div{width:56px;height:1px;background:rgba(255,255,255,.15);}
+.foot-insts{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,.45);line-height:1.9;}
+.foot-eu{font-family:'Inter',sans-serif;font-size:10.5px;color:rgba(255,255,255,.3);letter-spacing:.07em;text-transform:uppercase;}
+/* PRINT */
+@media print{
+  .sitenav,.eu-strip{display:none!important;}
+  .hero,.about-sec,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .principle{opacity:1!important;transform:none!important;}
+  body{font-size:12pt;}
+  @page{margin:18mm;size:A4;}
+}
+/* RESPONSIVE */
+@media(max-width:720px){
+  .preamble-inner,.about-inner{grid-template-columns:1fr;}
+  .inst-grid{grid-template-columns:1fr 1fr;}
+  .principle{grid-template-columns:52px 1fr;}
+  .p-num-col span{font-size:20px;}
+  .p-text{font-size:15px;}
+  .wrap{padding:0 20px;}
+}
+@media(prefers-reduced-motion:reduce){.principle{opacity:1!important;transform:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="eu-strip">
+  <div class="eu-strip-l">
+    <div class="eu-stars">${stars}</div>
+    <span class="eu-lab">Co-funded by the Erasmus+ Programme of the European Union</span>
+  </div>
+  <span class="eu-strip-r">ICAM BIP Toulouse 2026</span>
+</div>
+<nav class="sitenav" aria-label="Site navigation">
+  <span class="nav-brand">Manifesto for Sustainable AI &middot; ICAM BIP 2026</span>
+  <button class="btn-pdf" onclick="window.print()">&#8595; Download PDF</button>
+</nav>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-tag">ICAM BIP &middot; Toulouse &middot; Erasmus+ 2026</div>
+    <h1 class="hero-h1">Manifesto for<br>Sustainable AI</h1>
+    <div class="hero-rule">
+      <div class="hero-rule-line"></div>
+      <span class="hero-rule-count">${n} PRINCIPLES AGREED</span>
+    </div>
+    <p class="hero-sub">A declaration produced through live structured debate by five AI stakeholder groups &mdash; co-funded by the Erasmus+ Programme of the European Union, Toulouse, France.</p>
+    <div class="hero-chips">
+      <div class="hero-chip"><span class="lbl">Date</span><span class="val">${date}</span></div>
+      <div class="hero-chip"><span class="lbl">Location</span><span class="val">Toulouse, France</span></div>
+      <div class="hero-chip"><span class="lbl">Principles</span><span class="val">${n} agreed</span></div>
+      <div class="hero-chip"><span class="lbl">Status</span><span class="val">${hasAll?'&#x2736; Final':'Draft'}</span></div>
+    </div>
+  </div>
+</section>
+<section class="preamble">
+  <div class="wrap">
+    <div class="preamble-inner">
+      <div>
+        <span class="sec-tag">Why this exists</span>
+        <h2 class="sec-hed">A manifesto born from debate</h2>
+      </div>
+      <div class="preamble-body">
+        <p>Artificial intelligence is transforming European economies and societies at a pace that outstrips our regulatory and environmental frameworks. The question is no longer whether AI will scale &mdash; it will &mdash; but whether it will scale responsibly.</p>
+        <p>This manifesto is the outcome of a structured stakeholder debate at the ICAM Blended Intensive Programme in Toulouse, France, co-funded by the Erasmus+ Programme of the European Union. Five groups &mdash; each representing a distinct part of the AI ecosystem &mdash; researched, debated, and negotiated every principle below until reaching unanimous agreement.</p>
+        <div class="preamble-quote">
+          <p>Every principle in this document was agreed unanimously by representatives of AI model providers, data centre companies, enterprises deploying AI, environmental advocates, and EU regulators. None was imposed &mdash; all were negotiated in good faith.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="principles-sec" id="principles">
+  <div class="wrap">
+    <div class="principles-head">
+      <div class="badge">The Agreed Principles</div>
+      <h2>What we commit to</h2>
+      <p>The following principles were agreed unanimously by all five stakeholder groups through live debate. They apply to AI development, deployment, and governance across Europe.</p>
+      <div class="principles-count"><span class="num">${n}</span><span class="lbl">&nbsp;Principles</span></div>
+    </div>
+    <div class="principles-list">${principlesHTML}</div>
+  </div>
+</section>
+<section class="about-sec">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="a-body">
+        <span class="a-tag">About this programme</span>
+        <h2 class="a-hed">What is an Erasmus+ Blended Intensive Programme?</h2>
+        <p>Erasmus+ is the European Union&rsquo;s flagship programme for education, training, youth, and sport. With a budget of &euro;26.2 billion for 2021&ndash;2027, it has supported over 13 million people in studying and collaborating across Europe and beyond.</p>
+        <p>A Blended Intensive Programme (BIP) combines short-term in-person mobility with a mandatory online collaboration phase, bringing students from at least three European countries together to tackle a shared real-world challenge. This BIP hosted students from France, Spain, Belgium, and Ireland for three intensive days in Toulouse.</p>
+        <p>The theme: the sustainability of artificial intelligence &mdash; its environmental, social, economic, and regulatory dimensions across the European Union.</p>
+      </div>
+      <div class="a-body">
+        <span class="a-tag">How this manifesto was produced</span>
+        <h2 class="a-hed">The debate process</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-dot">1</div>
+            <div class="step-body"><strong>Preparation (30 June)</strong><span>Five teams researched their stakeholder&rsquo;s real-world position and formulated their key principles.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-dot">2</div>
+            <div class="step-body"><strong>Structured Debate (1 July, 9:00)</strong><span>Each group presented their position. Points were debated one by one and marked agreed or disputed in real time.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-dot">3</div>
+            <div class="step-body"><strong>Negotiation &amp; Consensus</strong><span>Disputed points were revised until all five groups could accept them. No principle appears unless every group agreed.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-dot">4</div>
+            <div class="step-body"><strong>Manifesto Published</strong><span>When unanimous agreement was reached, this document was generated live as the official output of the programme.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="inst-sec">
+  <div class="wrap">
+    <div class="inst-head">
+      <div class="badge">Partner Universities</div>
+      <h2>Participating Institutions</h2>
+    </div>
+    <div class="inst-grid">
+      <div class="icard">
+        <div class="icard-logo">
+          <img src="https://www.icam.fr/wp-content/themes/icam/img/logo.svg" alt="ICAM" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
+          <span class="fb">ICAM</span>
+        </div>
+        <div class="icard-flag">&#127467;&#127479; France</div>
+        <div class="icard-name">ICAM</div>
+        <div class="icard-city">Institut Catholique d&rsquo;Arts et M&eacute;tiers<br>Toulouse</div>
+        <div class="icard-host">Host Institution</div>
+      </div>
+      <div class="icard">
+        <div class="icard-logo">
+          <img src="https://www.uloyola.es/templates/v6/images/isologo_loyola_principal.svg" alt="Universidad Loyola" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
+          <span class="fb">Loyola</span>
+        </div>
+        <div class="icard-flag">&#127466;&#127480; Spain</div>
+        <div class="icard-name">Universidad Loyola</div>
+        <div class="icard-city">Seville / C&oacute;rdoba</div>
+      </div>
+      <div class="icard">
+        <div class="icard-logo">
+          <img src="https://www.unamur.be/themes/custom/unamur_theme/logo.svg" alt="Universit&eacute; de Namur" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
+          <span class="fb">UNamur</span>
+        </div>
+        <div class="icard-flag">&#127463;&#127466; Belgium</div>
+        <div class="icard-name">Universit&eacute; de Namur</div>
+        <div class="icard-city">Namur</div>
+      </div>
+      <div class="icard">
+        <div class="icard-logo">
+          <img src="https://www.ncirl.ie/Portals/_default/Skins/NCIRL/Images/logo-NCI.png" alt="National College of Ireland" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
+          <span class="fb">NCI</span>
+        </div>
+        <div class="icard-flag">&#127470;&#127466; Ireland</div>
+        <div class="icard-name">National College of Ireland</div>
+        <div class="icard-city">Dublin</div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-stars">${stars}</div>
+      <div class="foot-title">Manifesto for Sustainable AI 2026</div>
+      <div class="foot-sub">${date} &middot; Toulouse, France</div>
+      <div class="foot-div"></div>
+      <div class="foot-insts">ICAM &middot; Universidad Loyola &middot; Universit&eacute; de Namur &middot; National College of Ireland</div>
+      <div class="foot-eu">Co-funded by the Erasmus+ Programme of the European Union</div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  if(!window.IntersectionObserver)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.principle').forEach(function(el){obs.observe(el);});
+})();
+<\/script>
+</body>
+</html>`;
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+showView('intro');
+</script>
+</body>
+</html>
