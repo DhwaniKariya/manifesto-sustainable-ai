@@ -1192,6 +1192,15 @@ footer{background:var(--blue);padding:52px 0 44px;}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 showView('intro');
+
+/* Guarantee university tiles open in new tab regardless of any cascade interference */
+document.querySelectorAll('a.inst-card,a.icard').forEach(function(el){
+  el.addEventListener('click',function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    window.open(el.getAttribute('href'),'_blank','noopener,noreferrer');
+  });
+});
 </script>
 </body>
 </html>
