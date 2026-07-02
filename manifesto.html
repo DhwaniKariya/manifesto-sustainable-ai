@@ -187,6 +187,34 @@ a.principle-card{text-decoration:none;display:block;}
   border:1px solid #86EFAC;border-radius:var(--r-pill);padding:2px 9px;
   margin-left:8px;vertical-align:middle;}
 
+/* ── SECTOR BLOCKS ────────────────────────── */
+.sector-block{border:1.5px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;background:var(--bg);overflow:hidden;}
+.sector-block:last-child{margin-bottom:0;}
+.sector-header{display:flex;align-items:center;gap:14px;padding:17px 24px;border-bottom:1px solid var(--border);background:var(--bg2);}
+.sector-icon{font-size:20px;flex-shrink:0;line-height:1;}
+.sector-title{font-size:clamp(.95rem,2vw,1.15rem);font-weight:800;color:var(--blue);letter-spacing:-.01em;}
+.sector-block .commitment-list{padding:4px 24px 0;}
+.sector-block .commitment-item{padding:16px 0;}
+.sector-block .commitment-item:last-child{padding-bottom:6px;}
+
+/* ── FUTURE POINTS TO ADD ─────────────────── */
+.future-sec{padding:96px 0;background:#FFFBEB;border-top:4px solid var(--yellow-dk);}
+.future-kicker{display:inline-flex;align-items:center;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#92400E;font-weight:700;
+  padding:4px 13px;background:#FEF3C7;border:1px solid #FDE68A;
+  border-radius:var(--r-pill);margin-bottom:18px;}
+.future-sec .sec-h2{color:#78350F;}
+.future-sec .sec-sub{color:#92400E;}
+.future-groups{display:flex;flex-direction:column;gap:0;margin-top:36px;}
+.future-group{padding:24px 0;border-bottom:1px solid #FDE68A;}
+.future-group:last-child{border-bottom:none;padding-bottom:0;}
+.future-group-title{font-size:15px;font-weight:800;color:#92400E;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.future-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.future-list li{font-size:14px;color:#78350F;line-height:1.74;padding:12px 16px;
+  background:rgba(253,230,138,.22);border-radius:var(--r-md);border-left:3px solid var(--yellow-dk);}
+.future-open-points{margin-top:52px;padding-top:44px;border-top:1px solid #FDE68A;}
+.future-open-title{font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:800;color:#78350F;margin-bottom:28px;letter-spacing:-.02em;}
+
 /* ── REGULATORY BACKBONE ──────────────────── */
 .backbone-sec{padding:96px 0;background:var(--blue-bg);}
 .backbone-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
@@ -287,11 +315,11 @@ h1,h2,h3,h4,
 /* ── PRINT ────────────────────────────────── */
 .print-sig{display:none;}
 @media print{
-  .sitenav,.eu-strip,.tabs-nav,.pip-sec,.open-sec,.sig-sec,.coord-sec,footer{display:none!important;}
-  .future-badge,.open-badge{display:none!important;}
+  .sitenav,.eu-strip,.pip-sec,.open-sec,.future-sec,.sig-sec,.coord-sec,footer{display:none!important;}
   .commitments-sec,.backbone-sec,.measurement-sec{display:block!important;}
-  .tab-panel{display:block!important;padding-top:0;}
-  .tab-panel+.tab-panel{border-top:1pt solid #ddd;margin-top:12pt;padding-top:12pt;}
+  .sector-block{border:1pt solid #ddd!important;margin-bottom:8pt!important;break-inside:avoid;}
+  .sector-header{background:#f5f5f5!important;padding:10pt 14pt!important;}
+  .sector-block .commitment-list{padding:0 14pt!important;}
   .print-sig{display:block!important;}
   .hero,.principles-sec,.pd-sec,.commitments-sec,.backbone-sec,.measurement-sec,.print-sig{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   body{font-size:10.5pt;}
@@ -312,7 +340,7 @@ h1,h2,h3,h4,
 }
 @media(max-width:900px){
   .principles-grid{grid-template-columns:repeat(3,1fr);}
-  .backbone-list,.meas-grid,.open-grid{grid-template-columns:1fr;}
+  .backbone-list,.meas-grid,.open-grid,.future-sec .open-grid{grid-template-columns:1fr;}
 }
 @media(max-width:640px){
   .wrap{padding:0 18px;}
@@ -563,55 +591,56 @@ h1,h2,h3,h4,
   <div class="wrap">
     <div class="sec-tag">Agreed Commitments</div>
     <h2 class="sec-h2" id="comm-h">Commitments by Sector</h2>
-    <p class="sec-sub">What each group commits to. Items marked <span class="open-badge" style="vertical-align:middle;margin-left:0;">Open Point</span> remain under active negotiation. <span class="future-badge" style="vertical-align:middle;margin-left:0;">Future Scope</span> items are aspirational targets for the next phase.</p>
-
-    <nav class="tabs-nav" role="tablist" aria-label="Stakeholder groups">
-      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-model" data-tab="model">🧠 AI Model Providers</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-dc" data-tab="dc">🏭 Data Centres</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-eng" data-tab="eng">⚙️ AI Engineers</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-co" data-tab="co">🏢 Companies Using AI</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-env" data-tab="env">🌍 Environmentalists</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-reg" data-tab="reg">⚖️ EU Regulators</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-jour" data-tab="jour">📰 Journalists</button>
-    </nav>
+    <p class="sec-sub">What each of the seven groups has agreed and signed. Every point below is part of the final manifesto.</p>
 
     <!-- AI MODEL PROVIDERS -->
-    <div id="tab-model" class="tab-panel active" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">🧠</span>
+        <h3 class="sector-title">AI Model Providers</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Adhere to the GPAI Code of Practice (Transparency, Copyright, Safety &amp; Security) as the recognised compliance route; voluntary adherence provides a presumption of conformity until harmonised European standards are published.</div><div class="ci-source">Source: <a href="https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai" target="_blank" rel="noopener">European Commission — GPAI Code of Practice</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Document known or estimated training energy and report a representative inference figure (e.g. energy per standard response). Comparable cross-provider reporting follows a single agreed EU measurement methodology before it becomes binding.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/annex/11/" target="_blank" rel="noopener">EU AI Act, Art. 53 &amp; Annex XI</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Publish a system card per model release covering capabilities, evaluations, limitations and risk assessment; maintain a public list of safety commitments.</div></div></li>
         <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Requirements apply to all providers serving the EU market (level playing field); reporting templates standardised and free; obligations scale with provider size (SME / small mid-cap relief).</div><div class="ci-source">Source: <a href="https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai" target="_blank" rel="noopener">European Parliament — Digital Omnibus on AI</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Establish a joint review council — AI model providers, EU regulators, data centres and AI-using market leaders — to develop and deploy safer and greener models through mutual investment and commitment. <span class="open-badge">Open Point</span></div></div></li>
-        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Pursue a regulator–provider partnership to keep regulation in step with AI development pace and strengthen Europe against foreign hyperscalers. <span class="open-badge">Open Point</span></div></div></li>
       </ul>
     </div>
 
     <!-- DATA CENTRES -->
-    <div id="tab-dc" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">🏭</span>
+        <h3 class="sector-title">Data Centre Companies</h3>
+      </div>
       <ul class="commitment-list">
-        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Publish annually their PUE/WUE under the EU methodology, with high-level improvement targets. Tiered transparency model: SMEs publish aggregated KPIs; per-facility vs. aggregated publication scope remains under negotiation. <span class="open-badge">Open Point</span></div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive/energy-performance-data-centres_en" target="_blank" rel="noopener">EED (EU) 2023/1791 + Delegated Reg (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Publish annually their PUE/WUE under the EU methodology, with high-level improvement targets; SMEs publish aggregated KPIs.</div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive/energy-performance-data-centres_en" target="_blank" rel="noopener">EED (EU) 2023/1791 + Delegated Reg (EU) 2024/1364</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Procure clean energy; reuse/recirculate water; recover waste heat where technically, economically and locally feasible.</div></div></li>
         <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">In water-stressed locations, disclose cooling-water source and drought safeguards, and do not deploy water-intensive cooling that materially competes with household, agricultural or ecological water needs.</div></div></li>
         <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Support a phased EU data-centre sustainability rating scheme using a comparable EU methodology and, once adopted, publish the applicable rating and legally required public KPIs.</div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/news/commission-takes-first-step-towards-establishing-eu-wide-scheme-rating-sustainability-data-centres-2023-12-12_en" target="_blank" rel="noopener">European Commission — EU-wide sustainability rating scheme</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Genuine trade secrets (security architecture, pricing, supplier contracts, granular telemetry) remain confidential to competent authorities; scope of public disclosure is an open point. <span class="open-badge">Open Point</span></div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Reg (EU) 2024/1364</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Annual verification of environmental KPIs (PUE, WUE, water safeguards) by Journalists and Environmentalists to ensure accuracy and prevent greenwashing.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Regulation (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Genuine trade secrets (security architecture, pricing, supplier contracts, granular telemetry) remain confidential to competent authorities only; this is a voluntary sector commitment.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Reg (EU) 2024/1364</a></div></div></li>
       </ul>
     </div>
 
     <!-- AI ENGINEERS -->
-    <div id="tab-eng" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">⚙️</span>
+        <h3 class="sector-title">AI Engineers</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Apply energy-efficient development and documentation practices, anticipating AI Act harmonised standards on resource use.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">EU AI Act, Art. 40</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Maintain professional accountability: document design choices, uphold cross-border compliance awareness, and conduct a user-impact review before deployment.</div></div></li>
         <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Support workforce transition and reskilling with employers, governments and educators; anchored to the EU Pact for Skills.</div><div class="ci-source">Source: <a href="https://pact-for-skills.ec.europa.eu/" target="_blank" rel="noopener">European Commission — EU Pact for Skills</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Document accessibility considerations (e.g., usability for disabled users) as part of standard design documentation.</div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Participate in annual public trust surveys to measure societal confidence in AI systems. <span class="future-badge">Future Scope</span></div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">EU AI Act, Art. 40</a></div></div></li>
       </ul>
     </div>
 
     <!-- COMPANIES USING AI -->
-    <div id="tab-co" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">🏢</span>
+        <h3 class="sector-title">Companies Using AI (Deployers)</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Human oversight for every high-risk decision (credit, insurance, claims, employment): no loan, claim, benefit or price decided by algorithm alone.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/14/" target="_blank" rel="noopener">EU AI Act, Art. 14 — human oversight</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Transparency and a right to explanation when AI sets a price or makes a decision; no pricing or underwriting on protected or sensitive personal data.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">GDPR, Art. 22 — automated decisions</a></div></div></li>
@@ -621,44 +650,48 @@ h1,h2,h3,h4,
         <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Align with the EU AI Act and GDPR; adopt voluntary management standards (ISO/IEC 42001) and risk frameworks (NIST AI RMF) as good practice.</div><div class="ci-source">Source: <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001</a> · <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF 1.0</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Provide worker reskilling whenever AI changes a role, conditional on proportionate rules (regulatory sandboxes; SME relief and the deferred high-risk timeline).</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/57/" target="_blank" rel="noopener">EU AI Act, Art. 57 — regulatory sandboxes</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">08</div><div class="ci-body"><div class="ci-text">Pair each use case with a stated benefit and a managed risk; submit evidence on which rules help or hinder adoption.</div></div></li>
-        <li class="commitment-item"><div class="ci-num">09</div><div class="ci-body"><div class="ci-text">Ensure that AI benefits reach rural, low-income, and underserved communities, supporting Europe's digital inclusion goals. <span class="future-badge">Future Scope</span></div></div></li>
       </ul>
     </div>
 
     <!-- ENVIRONMENTALISTS -->
-    <div id="tab-env" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">🌍</span>
+        <h3 class="sector-title">Environmentalists</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Provide verified, sourced footprint metrics (energy, water, land, waste) to inform proportionate limits.</div><div class="ci-source">Source: <a href="https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works" target="_blank" rel="noopener">IEA — Energy and AI, 2025</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Ground obligations in existing EU law (EED + Delegated Regulation); support facility-level environmental-KPI transparency with redactions limited to genuine trade secrets.</div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive/energy-performance-data-centres_en" target="_blank" rel="noopener">EED (EU) 2023/1791 + Delegated Reg (EU) 2024/1364</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Recommend (not mandate) that Member States use their existing freedom to lower the ≥500 kW reporting threshold, and that data centres additionally report a water-reduction strategy, territorial-impact analysis and employment data as EU-wide best practice.</div></div></li>
-        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Add land use and water-stress-zone classification as a fifth reporting dimension to the rating scheme, ideally before its first labels; treat as phase 2 anchored to an existing water-stress index. <span class="open-badge">Open Point</span></div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Environmental scrutiny triggers on facility footprint (EED ≥500 kW, or lower national threshold), not on the AI Act model-compute threshold; Art. 55 is reserved for model-level systemic risk.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/55/" target="_blank" rel="noopener">EU AI Act, Art. 55 — systemic risk</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Take part in independent monitoring and verification of environmental claims alongside Journalists.</div></div></li>
-        <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Publish a yearly report summarising AI's environmental footprint across Europe, including energy, water, land impact, and waste — jointly verified with Journalists. <span class="future-badge">Future Scope</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Recommend (not mandate) that Member States lower the ≥500 kW reporting threshold, and that data centres additionally report a water-reduction strategy, territorial-impact analysis and employment data as EU-wide best practice.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Environmental scrutiny triggers on facility footprint (EED ≥500 kW, or lower national threshold), not on the AI Act model-compute threshold; Art. 55 is reserved for model-level systemic risk.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/55/" target="_blank" rel="noopener">EU AI Act, Art. 55 — systemic risk</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Take part in independent monitoring and verification of environmental claims alongside Journalists.</div></div></li>
       </ul>
     </div>
 
     <!-- EU REGULATORS -->
-    <div id="tab-reg" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">⚖️</span>
+        <h3 class="sector-title">EU Regulators</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Provide proportionate, predictable rules aligned to AI Act risk tiers and GDPR, with guidance, regulatory sandboxes and realistic timelines (including the deferred high-risk dates).</div><div class="ci-source">Source: <a href="https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai" target="_blank" rel="noopener">European Parliament — Digital Omnibus on AI</a></div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Provide standardised, free reporting templates; scale obligations to actor size.</div></div></li>
         <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Advocate that per-facility environmental-performance KPIs be made public (via amendment to the Delegated Regulation), while protecting genuine trade secrets.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Reg (EU) 2024/1364</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Convene and chair the multi-stakeholder review council; mediate fairly; act as final arbiter. <span class="open-badge">Open Point</span></div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Include a clear timeline summarising when different obligations under the EU AI Act become enforceable. <span class="future-badge">Future Scope</span></div><div class="ci-source">Source: <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank" rel="noopener">EU AI Act — Implementation Timeline</a></div></div></li>
-        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Publish an annual briefing summarising progress on AI governance, enforcement, and standardisation. <span class="future-badge">Future Scope</span></div></div></li>
-        <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Categorise the priority of data being used by service providers. <span class="future-badge">Future Scope</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Convene and chair the multi-stakeholder review council; mediate fairly; act as final arbiter on unresolved points.</div></div></li>
       </ul>
     </div>
 
     <!-- JOURNALISTS -->
-    <div id="tab-jour" class="tab-panel" role="tabpanel">
+    <div class="sector-block">
+      <div class="sector-header">
+        <span class="sector-icon" aria-hidden="true">📰</span>
+        <h3 class="sector-title">Journalists — Coordinators &amp; Co-signatories</h3>
+      </div>
       <ul class="commitment-list">
         <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Verify all claims and figures against primary sources before publication, and issue corrections where needed.</div></div></li>
         <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Be transparent about sources and methods; report each group's position fairly and without bias.</div></div></li>
         <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Maintain the shared evidence repository and publish the agreed final manifesto in the public interest.</div></div></li>
-        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Join the multi-stakeholder review council as non-voting observers, ensuring transparency and public accountability in discussions about AI safety, sustainability, and competitiveness. <span class="future-badge">Future Scope</span></div></div></li>
-        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Publish quarterly summaries of sustainability, safety, and governance developments across all stakeholder groups. <span class="future-badge">Future Scope</span></div></div></li>
       </ul>
     </div>
 
@@ -704,11 +737,6 @@ h1,h2,h3,h4,
         <p class="bi-text">Independent verification by Environmentalists and Journalists against published KPIs; review milestone aligned to the Art. 40 report due 2 August 2028.</p>
         <p class="bi-source">Source: EU AI Act, Art. 40 — <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">artificialintelligenceact.eu</a></p>
       </div>
-      <div class="backbone-item">
-        <div class="bi-num">Principle 6</div>
-        <div class="bi-title">Documentation <span class="future-badge">Future Scope</span></div>
-        <p class="bi-text">All AI model providers and data centre operators publish standardised annual documentation reports — increasing transparency and building public trust in the EU AI ecosystem.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -740,60 +768,131 @@ h1,h2,h3,h4,
 </section>
 
 <!-- ════════════════════════
-     OPEN POINTS
+     FUTURE POINTS TO ADD
 ════════════════════════ -->
-<section class="open-sec" id="open-points" aria-labelledby="open-h">
+<section class="future-sec" id="future-points" aria-labelledby="future-h">
   <div class="wrap">
-    <div class="open-kicker">Future Scope — Under Active Negotiation</div>
-    <h2 class="sec-h2" id="open-h">Open Points to Resolve</h2>
-    <p class="sec-sub" style="max-width:720px;">These nine items remain under active negotiation and are not part of the signed manifesto. They represent the next phase of work — shown here for transparency, excluded from the downloadable PDF.</p>
-    <div class="open-grid">
-      <div class="open-item">
-        <div class="oi-num">Open Point 1</div>
-        <div class="oi-title">Facility-Level Environmental Disclosure</div>
-        <p class="oi-text">Environmentalists vs Data Centres: how much per-facility KPI data becomes public. Regulator lean: energy, water, PUE/WUE and cooling safeguards public; security, pricing, contracts and granular telemetry remain confidential.</p>
+    <div class="future-kicker">Not yet agreed — next phase of work</div>
+    <h2 class="sec-h2" id="future-h">Future Points to Add</h2>
+    <p class="sec-sub" style="max-width:760px;color:#92400E;">These points were proposed during the debate but are not included in the signed manifesto. They are the agenda for the next round of negotiations. This section is shown on the website for transparency and is excluded from the downloadable PDF.</p>
+
+    <div class="future-groups">
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">🧠</span> AI Model Providers</h3>
+        <ul class="future-list">
+          <li>Establish a joint review council — AI model providers, EU regulators, data centres and AI-using market leaders — to develop and deploy safer and greener models through mutual investment and commitment.</li>
+          <li>Pursue a regulator–provider partnership to keep regulation in step with AI development pace and strengthen Europe against foreign hyperscalers.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 2</div>
-        <div class="oi-title">Comparable Energy-Reporting Methodology</div>
-        <p class="oi-text">Adopt a single EU measurement standard before "comparable" cross-provider reporting becomes binding. Proposed basis: Mistral's lifecycle indicators; apply to all providers serving the EU market.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">🏭</span> Data Centre Companies</h3>
+        <ul class="future-list">
+          <li>Annual independent verification of environmental KPIs (PUE, WUE, water safeguards) by Journalists and Environmentalists — to ensure accuracy and prevent greenwashing. (Scope of facility-level publication vs. confidentiality also remains under negotiation.)</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 3</div>
-        <div class="oi-title">Multi-Stakeholder Review Council</div>
-        <p class="oi-text">At AI Model Providers' request: a joint council of providers, EU regulators, data centres and AI-using leaders. Mandate, membership (proposed: add environmentalists) and regulator chair to be agreed.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">⚙️</span> AI Engineers</h3>
+        <ul class="future-list">
+          <li>Document accessibility considerations as part of standard design documentation (e.g., usability for disabled users).</li>
+          <li>Participate in annual public trust surveys to measure societal confidence in AI systems.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 4</div>
-        <div class="oi-title">Rating-Scheme Land-Use / Water-Stress Dimension</div>
-        <p class="oi-text">Environmentalists ask for a fifth KPI category before the rating scheme's first labels (expected August 2027). Feasibility is uncertain; no harmonised EU land-use dataset exists — treat as phase 2.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">🏢</span> Companies Using AI</h3>
+        <ul class="future-list">
+          <li>Companies must ensure that AI benefits reach rural, low-income, and underserved communities — supporting Europe's digital inclusion goals.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 5</div>
-        <div class="oi-title">Proportionality, SME Relief &amp; Free Templates</div>
-        <p class="oi-text">Standardise free reporting templates and scale obligations to actor size so compliance cost does not fall disproportionately on EU startups and SMEs.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">🌍</span> Environmentalists</h3>
+        <ul class="future-list">
+          <li>Add land use and water-stress-zone classification as a fifth reporting dimension to the rating scheme, ideally before its first labels — treat as phase 2 anchored to an existing water-stress index.</li>
+          <li>Publish a yearly report summarising AI's environmental footprint across Europe (energy, water, land impact, waste) — jointly verified with Journalists.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 6</div>
-        <div class="oi-title">Regulatory Pace &amp; Competitiveness Partnership</div>
-        <p class="oi-text">At AI Model Providers' request: a regulator–provider partnership to update rules at AI development pace. Regulator lean: support competitiveness, faster standardisation, and a level playing field — not reduced scrutiny.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">⚖️</span> EU Regulators</h3>
+        <ul class="future-list">
+          <li>Include a clear timeline summarising when different obligations under the EU AI Act become enforceable.</li>
+          <li>Publish an annual briefing summarising progress on AI governance, enforcement, and standardisation.</li>
+          <li>Categorise the priority of data being used by service providers.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 7</div>
-        <div class="oi-title">Tax Rebates &amp; Incentives for Green AI</div>
-        <p class="oi-text">Discussion between EU regulators and data centres on tax rebates or other incentives for companies and AI model providers using verified greener AI approaches.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">📰</span> Journalists</h3>
+        <ul class="future-list">
+          <li>Join the multi-stakeholder review council as non-voting observers, ensuring transparency and public accountability in discussions about AI safety, sustainability, and competitiveness.</li>
+          <li>Publish quarterly summaries of sustainability, safety, and governance developments across all stakeholder groups.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 8</div>
-        <div class="oi-title">Reskilling Funds &amp; R&amp;D Startup Funding</div>
-        <p class="oi-text">Dedicated public funding for worker reskilling programmes and R&amp;D support for AI startups. Scope and delivery mechanism to be agreed between regulators and deployers.</p>
+
+      <div class="future-group">
+        <h3 class="future-group-title"><span aria-hidden="true">📋</span> Regulatory Backbone</h3>
+        <ul class="future-list">
+          <li>Documentation requirement — all AI model providers and data centre operators publish standardised annual documentation reports, increasing transparency and building public trust.</li>
+        </ul>
       </div>
-      <div class="open-item">
-        <div class="oi-num">Open Point 9</div>
-        <div class="oi-title">Independent Verification of All Sustainability Claims</div>
-        <p class="oi-text">All sustainability, safety, and transparency claims made by AI model providers and data centres will undergo independent verification by Journalists and Environmentalists, reinforcing accountability.</p>
+
+    </div>
+
+    <div class="future-open-points">
+      <h3 class="future-open-title">Open Negotiation Points — 9 Unresolved Items</h3>
+      <div class="open-grid">
+        <div class="open-item">
+          <div class="oi-num">Open Point 1</div>
+          <div class="oi-title">Facility-Level Environmental Disclosure</div>
+          <p class="oi-text">Environmentalists vs Data Centres: how much per-facility KPI data becomes public. Regulator lean: energy, water, PUE/WUE and cooling safeguards public; security, pricing, contracts and granular telemetry remain confidential.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 2</div>
+          <div class="oi-title">Comparable Energy-Reporting Methodology</div>
+          <p class="oi-text">Adopt a single EU measurement standard before "comparable" cross-provider reporting becomes binding. Proposed basis: Mistral's lifecycle indicators; apply to all providers serving the EU market.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 3</div>
+          <div class="oi-title">Multi-Stakeholder Review Council</div>
+          <p class="oi-text">At AI Model Providers' request: a joint council of providers, EU regulators, data centres and AI-using leaders. Mandate, membership (proposed: add environmentalists) and regulator chair to be agreed.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 4</div>
+          <div class="oi-title">Rating-Scheme Land-Use / Water-Stress Dimension</div>
+          <p class="oi-text">Environmentalists ask for a fifth KPI category before the rating scheme's first labels (expected August 2027). No harmonised EU land-use dataset exists — treat as phase 2.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 5</div>
+          <div class="oi-title">Proportionality, SME Relief &amp; Free Templates</div>
+          <p class="oi-text">Standardise free reporting templates and scale obligations to actor size so compliance cost does not fall disproportionately on EU startups and SMEs.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 6</div>
+          <div class="oi-title">Regulatory Pace &amp; Competitiveness Partnership</div>
+          <p class="oi-text">A regulator–provider partnership to update rules at AI development pace. Regulator lean: support competitiveness, faster standardisation, and a level playing field — not reduced scrutiny.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 7</div>
+          <div class="oi-title">Tax Rebates &amp; Incentives for Green AI</div>
+          <p class="oi-text">Tax rebates or other incentives for companies and AI model providers using verified greener AI approaches — proposed by data centres and EU regulators.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 8</div>
+          <div class="oi-title">Reskilling Funds &amp; R&amp;D Startup Funding</div>
+          <p class="oi-text">Dedicated public funding for worker reskilling programmes and R&amp;D support for AI startups. Scope and delivery mechanism to be agreed between regulators and deployers.</p>
+        </div>
+        <div class="open-item">
+          <div class="oi-num">Open Point 9</div>
+          <div class="oi-title">Independent Verification of All Sustainability Claims</div>
+          <p class="oi-text">All sustainability, safety, and transparency claims made by AI model providers and data centres will undergo independent verification by Journalists and Environmentalists.</p>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
