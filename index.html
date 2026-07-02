@@ -145,7 +145,7 @@ body.setup{padding-top:42px;}
 .inst-sub{font-size:14px;color:var(--muted);margin-bottom:36px;}
 .inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:44px;}
 .inst-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);
-  padding:28px 20px 22px;text-align:center;
+  padding:28px 20px 22px;text-align:center;display:block;text-decoration:none;color:inherit;
   transition:border-color var(--ease),box-shadow var(--ease),transform var(--ease);}
 .inst-card:hover{border-color:var(--blue);box-shadow:0 6px 22px rgba(0,68,148,.1);transform:translateY(-3px);}
 .inst-logo-wrap{height:56px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
@@ -474,7 +474,7 @@ h1,h2,h3,h4,.intro-h1,.bip-col h2,.section-heading,.fact-num,.group-title,.foot-
       <p class="inst-sub">Four universities from four European countries, united by Erasmus+ for this joint programme.</p>
       <div class="inst-grid">
 
-        <div class="inst-card">
+        <a class="inst-card" href="https://www.icam.fr" target="_blank" rel="noopener noreferrer">
           <div class="inst-logo-wrap">
             <img src="https://www.icam.fr/wp-content/themes/icam/img/logo.svg" alt="ICAM logo"
                  onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
@@ -485,9 +485,9 @@ h1,h2,h3,h4,.intro-h1,.bip-col h2,.section-heading,.fact-num,.group-title,.foot-
           <div class="inst-city">Institut Catholique d'Arts et Métiers</div>
           <div class="inst-city">Toulouse</div>
           <div class="inst-host">Host Institution</div>
-        </div>
+        </a>
 
-        <div class="inst-card">
+        <a class="inst-card" href="https://www.uloyola.es" target="_blank" rel="noopener noreferrer">
           <div class="inst-logo-wrap">
             <img src="https://www.uloyola.es/templates/v6/images/isologo_loyola_principal.svg" alt="Universidad Loyola logo"
                  onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
@@ -496,9 +496,9 @@ h1,h2,h3,h4,.intro-h1,.bip-col h2,.section-heading,.fact-num,.group-title,.foot-
           <div class="inst-flag-tag">🇪🇸 Spain</div>
           <div class="inst-name">Universidad Loyola</div>
           <div class="inst-city">Seville / Córdoba</div>
-        </div>
+        </a>
 
-        <div class="inst-card">
+        <a class="inst-card" href="https://www.unamur.be" target="_blank" rel="noopener noreferrer">
           <div class="inst-logo-wrap">
             <img src="https://www.unamur.be/themes/custom/unamur_theme/logo.svg" alt="Université de Namur logo"
                  onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
@@ -507,9 +507,9 @@ h1,h2,h3,h4,.intro-h1,.bip-col h2,.section-heading,.fact-num,.group-title,.foot-
           <div class="inst-flag-tag">🇧🇪 Belgium</div>
           <div class="inst-name">Université de Namur</div>
           <div class="inst-city">Namur</div>
-        </div>
+        </a>
 
-        <div class="inst-card">
+        <a class="inst-card" href="https://www.ncirl.ie" target="_blank" rel="noopener noreferrer">
           <div class="inst-logo-wrap">
             <img src="https://www.ncirl.ie/Portals/_default/Skins/NCIRL/Images/logo-NCI.png" alt="National College of Ireland logo"
                  onerror="this.style.display='none';this.parentElement.querySelector('.logo-fb').style.display='block'"/>
@@ -518,7 +518,7 @@ h1,h2,h3,h4,.intro-h1,.bip-col h2,.section-heading,.fact-num,.group-title,.foot-
           <div class="inst-flag-tag">🇮🇪 Ireland</div>
           <div class="inst-name">National College of Ireland</div>
           <div class="inst-city">Dublin</div>
-        </div>
+        </a>
 
       </div>
       <div class="inst-cta-row">
@@ -984,7 +984,7 @@ img{max-width:100%;height:auto;display:block;}
   background:#fff;border:1px solid var(--blue-lt);padding:5px 16px;border-radius:100px;margin-bottom:14px;}
 .inst-head h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.025em;color:var(--text);}
 .inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.icard{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 20px 22px;text-align:center;
+.icard{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 20px 22px;text-align:center;display:block;text-decoration:none;color:inherit;
   transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;}
 .icard:hover{border-color:var(--blue);box-shadow:0 6px 22px rgba(0,68,148,.1);transform:translateY(-3px);}
 .icard-logo{height:54px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
@@ -1124,7 +1124,7 @@ footer{background:var(--blue);padding:52px 0 44px;}
       <h2>Participating Institutions</h2>
     </div>
     <div class="inst-grid">
-      <div class="icard">
+      <a class="icard" href="https://www.icam.fr" target="_blank" rel="noopener noreferrer">
         <div class="icard-logo">
           <img src="https://www.icam.fr/wp-content/themes/icam/img/logo.svg" alt="ICAM" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
           <span class="fb">ICAM</span>
@@ -1133,8 +1133,8 @@ footer{background:var(--blue);padding:52px 0 44px;}
         <div class="icard-name">ICAM</div>
         <div class="icard-city">Institut Catholique d&rsquo;Arts et M&eacute;tiers<br>Toulouse</div>
         <div class="icard-host">Host Institution</div>
-      </div>
-      <div class="icard">
+      </a>
+      <a class="icard" href="https://www.uloyola.es" target="_blank" rel="noopener noreferrer">
         <div class="icard-logo">
           <img src="https://www.uloyola.es/templates/v6/images/isologo_loyola_principal.svg" alt="Universidad Loyola" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
           <span class="fb">Loyola</span>
@@ -1142,8 +1142,8 @@ footer{background:var(--blue);padding:52px 0 44px;}
         <div class="icard-flag">&#127466;&#127480; Spain</div>
         <div class="icard-name">Universidad Loyola</div>
         <div class="icard-city">Seville / C&oacute;rdoba</div>
-      </div>
-      <div class="icard">
+      </a>
+      <a class="icard" href="https://www.unamur.be" target="_blank" rel="noopener noreferrer">
         <div class="icard-logo">
           <img src="https://www.unamur.be/themes/custom/unamur_theme/logo.svg" alt="Universit&eacute; de Namur" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
           <span class="fb">UNamur</span>
@@ -1151,8 +1151,8 @@ footer{background:var(--blue);padding:52px 0 44px;}
         <div class="icard-flag">&#127463;&#127466; Belgium</div>
         <div class="icard-name">Universit&eacute; de Namur</div>
         <div class="icard-city">Namur</div>
-      </div>
-      <div class="icard">
+      </a>
+      <a class="icard" href="https://www.ncirl.ie" target="_blank" rel="noopener noreferrer">
         <div class="icard-logo">
           <img src="https://www.ncirl.ie/Portals/_default/Skins/NCIRL/Images/logo-NCI.png" alt="National College of Ireland" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fb').style.display='block'"/>
           <span class="fb">NCI</span>
@@ -1160,7 +1160,7 @@ footer{background:var(--blue);padding:52px 0 44px;}
         <div class="icard-flag">&#127470;&#127466; Ireland</div>
         <div class="icard-name">National College of Ireland</div>
         <div class="icard-city">Dublin</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
