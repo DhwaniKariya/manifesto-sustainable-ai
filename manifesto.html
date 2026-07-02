@@ -89,7 +89,7 @@ a{color:inherit;}
 
 /* ── PRINCIPLES ───────────────────────────── */
 .principles-sec{padding:96px 0;background:var(--bg);}
-.principles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.principles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));gap:14px;}
 .principle-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);
   padding:36px 22px 28px;position:relative;overflow:hidden;
   transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;}
@@ -126,6 +126,13 @@ a{color:inherit;}
 .pcbeam{transform-box:fill-box;transform-origin:50% 0%;animation:pcBalance 3.6s ease-in-out infinite;}
 @keyframes pcBalance{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
 @keyframes heroGrad{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+.pci1,.pci2,.pci3{transform-box:fill-box;transform-origin:center;}
+.pci1{animation:pcRipple 2.4s ease-out infinite 0s;}
+.pci2{animation:pcRipple 2.4s ease-out infinite .7s;}
+.pci3{animation:pcRipple 2.4s ease-out infinite 1.4s;}
+@keyframes pcRipple{0%{transform:scale(.4);opacity:.35;}100%{transform:scale(1.5);opacity:0;}}
+.pct1{stroke-dasharray:32;stroke-dashoffset:32;animation:pcCheck 2.8s ease-in-out infinite;}
+@keyframes pcCheck{0%,100%{stroke-dashoffset:32;opacity:.18;}55%{stroke-dashoffset:0;opacity:.42;}}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:none;}
 a.principle-card{text-decoration:none;display:block;}
@@ -174,6 +181,10 @@ a.principle-card{text-decoration:none;display:block;}
 .open-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;
   letter-spacing:.06em;text-transform:uppercase;color:#92400E;background:#FEF3C7;
   border:1px solid #FDE68A;border-radius:var(--r-pill);padding:2px 9px;
+  margin-left:8px;vertical-align:middle;}
+.future-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#166534;background:#F0FDF4;
+  border:1px solid #86EFAC;border-radius:var(--r-pill);padding:2px 9px;
   margin-left:8px;vertical-align:middle;}
 
 /* ── REGULATORY BACKBONE ──────────────────── */
@@ -265,20 +276,39 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
 .foot-inst span{font-size:12px;color:rgba(255,255,255,.5);font-weight:500;}
 .foot-erasmus{font-size:11px;color:rgba(255,255,255,.28);text-align:center;letter-spacing:.04em;}
 
+/* ── TIMES NEW ROMAN HEADINGS ─────────────── */
+h1,h2,h3,h4,
+.hero-h1,.sec-h2,.pd-title,.pc-title,.pc-num,.pd-num,
+.pip-card-title,.bi-title,.oi-title,.sig-name,.foot-title,
+.coord-text h3,.coord-names h4,.member-name,.meas-col h3{
+  font-family:'Times New Roman',Georgia,Times,serif;
+}
+
 /* ── PRINT ────────────────────────────────── */
 .print-sig{display:none;}
 @media print{
-  .sitenav,.eu-strip,.tabs-nav,.pip-sec,.commitments-sec,.backbone-sec,.measurement-sec,.open-sec,.sig-sec,.coord-sec,footer{display:none!important;}
+  .sitenav,.eu-strip,.tabs-nav,.pip-sec,.open-sec,.sig-sec,.coord-sec,footer{display:none!important;}
+  .future-badge,.open-badge{display:none!important;}
+  .commitments-sec,.backbone-sec,.measurement-sec{display:block!important;}
+  .tab-panel{display:block!important;padding-top:0;}
+  .tab-panel+.tab-panel{border-top:1pt solid #ddd;margin-top:12pt;padding-top:12pt;}
   .print-sig{display:block!important;}
-  .hero,.principles-sec,.pd-sec,.print-sig{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .hero,.principles-sec,.pd-sec,.commitments-sec,.backbone-sec,.measurement-sec,.print-sig{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   body{font-size:10.5pt;}
   .hero{padding:48pt 0 40pt;}
-  .principles-sec{padding:40pt 0;}
-  .pd-sec{padding:40pt 0;}
-  .print-sig{padding:40pt 0;border-top:1pt solid #ccc;}
-  .print-sig h3{font-family:'Syne',sans-serif;font-size:16pt;font-weight:800;color:#004494;margin-bottom:16pt;}
+  .principles-sec{padding:24pt 0;}
+  .pd-sec{padding:24pt 0;}
+  .commitments-sec{padding:24pt 0;background:#fff!important;}
+  .backbone-sec{padding:24pt 0;}
+  .measurement-sec{padding:24pt 0;}
+  .print-sig{padding:32pt 0;border-top:1pt solid #ccc;}
+  .print-sig h3{font-family:'Times New Roman',Georgia,Times,serif;font-size:16pt;font-weight:800;color:#004494;margin-bottom:16pt;}
   .print-sig-list{font-size:10pt;line-height:2;color:#1A2640;}
   .print-sig-list span{display:block;}
+  .sec-sub{display:none;}
+  .backbone-list,.meas-grid{grid-template-columns:1fr 1fr!important;}
+  .principles-grid{grid-template-columns:repeat(4,1fr)!important;}
+  .pc-visual{display:none!important;}
 }
 @media(max-width:900px){
   .principles-grid{grid-template-columns:repeat(3,1fr);}
@@ -322,7 +352,7 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
 <nav class="sitenav" aria-label="Document navigation">
   <div style="display:flex;align-items:baseline;gap:0;">
     <span class="nav-brand">Manifesto for Sustainable AI</span>
-    <span class="nav-ver">v0.2 · 1 July 2026</span>
+    <span class="nav-ver">v0.3 · 2 July 2026</span>
   </div>
   <div class="nav-actions">
     <a href="index.html" class="btn-back">← Back</a>
@@ -335,16 +365,16 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
 ════════════════════════ -->
 <section class="hero" aria-label="Manifesto title and declaration">
   <div class="wrap hero-inner">
-    <div class="hero-kicker">ICAM BIP · Erasmus+ · Toulouse, France · 1 July 2026</div>
+    <div class="hero-kicker">ICAM BIP · Erasmus+ · Toulouse, France · 2 July 2026</div>
     <h1 class="hero-h1">Manifesto<br>for Sustainable AI</h1>
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
-      <span class="hero-rule-text">Version 0.2 · Agreed by consensus · ICAM BIP 2026</span>
+      <span class="hero-rule-text">Version 0.3 · Signed · ICAM BIP Toulouse · 2 July 2026</span>
     </div>
     <p class="hero-preamble">Artificial intelligence offers real benefits for Europe, but its growth must not come at the cost of the environment, people's rights, or public trust. We, the undersigned stakeholders, agree the principles and commitments below to make AI in Europe sustainable, fair, and trustworthy — leaving the world better for the next generation than we found it.</p>
     <div class="hero-chips">
-      <span class="hero-chip" style="cursor:pointer;" onclick="document.getElementById('signatories').scrollIntoView({behavior:'smooth'})"><strong>6</strong> Signatory Groups ↓</span>
-      <span class="hero-chip"><strong>5</strong> Shared Principles</span>
+      <span class="hero-chip" style="cursor:pointer;" onclick="document.getElementById('signatories').scrollIntoView({behavior:'smooth'})"><strong>7</strong> Signatory Groups ↓</span>
+      <span class="hero-chip"><strong>7</strong> Shared Principles</span>
       <span class="hero-chip">Toulouse, France</span>
       <span class="hero-chip">1 July 2026</span>
       <span class="hero-chip">Erasmus+ BIP</span>
@@ -359,7 +389,7 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
   <div class="wrap">
     <div class="sec-tag">Foundation</div>
     <h2 class="sec-h2" id="principles-h">Shared Principles</h2>
-    <p class="sec-sub">Five values every signatory commits to uphold, regardless of sector.</p>
+    <p class="sec-sub">Seven values every signatory commits to uphold, regardless of sector.</p>
     <div class="principles-grid">
       <a class="principle-card" href="#principle-01">
         <div class="pc-visual" aria-hidden="true">
@@ -436,6 +466,30 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
         <div class="pc-title">Fair Governance</div>
         <p class="pc-text">Rules proportionate, transparent, and evidence-based.</p>
       </a>
+      <a class="principle-card" href="#principle-06">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="pci1" cx="30" cy="27" r="8" fill="rgba(0,68,148,.28)"/>
+            <circle class="pci2" cx="30" cy="27" r="16" stroke="rgba(0,68,148,.22)" stroke-width="2" fill="none"/>
+            <circle class="pci3" cx="30" cy="27" r="24" stroke="rgba(0,68,148,.14)" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="pc-num">06</div>
+        <div class="pc-title">Inclusion</div>
+        <p class="pc-text">AI must be accessible, equitable, and beneficial across all communities.</p>
+      </a>
+      <a class="principle-card" href="#principle-07">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="23" r="13" stroke="rgba(0,68,148,.2)" stroke-width="2"/>
+            <path class="pct1" d="M19 23 L23 27 L31 17" stroke="rgba(0,68,148,.38)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <line x1="34" y1="33" x2="46" y2="46" stroke="rgba(0,68,148,.2)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pc-num">07</div>
+        <div class="pc-title">Public Trust</div>
+        <p class="pc-text">Transparency, explainability, and independent verification are essential.</p>
+      </a>
     </div>
   </div>
 </section>
@@ -447,7 +501,7 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
   <div class="wrap">
     <div class="sec-tag">In Detail</div>
     <h2 class="sec-h2" id="pd-h">What Each Principle Means</h2>
-    <p class="sec-sub">Click any numbered tile above to jump to its full explanation.</p>
+    <p class="sec-sub">Select any numbered tile above to jump to its full explanation.</p>
     <div class="pd-list">
       <div class="pd-item" id="principle-01">
         <div class="pd-num">01</div>
@@ -484,80 +538,128 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
           <p class="pd-text">Good governance is harder than either extreme — it is not the absence of rules, and it is not the accumulation of them. The EU AI Act's risk-tier structure is the right architecture: lighter for low-risk tools, stricter for high-impact systems, with harmonised standards and regulatory sandboxes to smooth the path for smaller actors. Transparency about regulatory intentions and realistic timelines is itself a form of fairness. The review milestone in 2028 (aligned to Art. 40) gives every sector a known checkpoint — not perpetual uncertainty.</p>
         </div>
       </div>
+      <div class="pd-item" id="principle-06">
+        <div class="pd-num">06</div>
+        <div>
+          <div class="pd-title">Inclusion</div>
+          <p class="pd-text">AI must not replicate or deepen existing inequalities. Accessibility means that the benefits — better healthcare diagnostics, more efficient public services, educational tools — reach rural communities, low-income households, people with disabilities, and underserved populations, not just those who can already afford the best of everything. Equitable deployment requires that AI systems are designed and tested across diverse demographic groups. The digital divide is a policy choice: this manifesto requires every signatory sector to name the communities they are reaching, not only the markets they are serving.</p>
+        </div>
+      </div>
+      <div class="pd-item" id="principle-07">
+        <div class="pd-num">07</div>
+        <div>
+          <div class="pd-title">Public Trust</div>
+          <p class="pd-text">Trust in AI cannot be assumed — it must be earned and continually renewed. Transparency means users know when they are interacting with an AI, how it made a decision, and what data it used. Explainability means that affected individuals can understand and challenge outcomes. Independent verification means that claims about safety, environmental impact, and fairness are checked by parties with no commercial interest in the result. Without these three elements, public trust is marketing copy. With them, it becomes the foundation on which everything else in this manifesto rests.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════
-     PRINCIPLES IN PRACTICE
+     SECTOR COMMITMENTS
 ════════════════════════ -->
-<section class="pip-sec" aria-labelledby="pip-h">
+<section class="commitments-sec" id="commitments" aria-labelledby="comm-h">
   <div class="wrap">
-    <div class="sec-tag">Principles in Practice</div>
-    <h2 class="sec-h2" id="pip-h">How the Principles Apply</h2>
-    <p class="sec-sub">The five shared principles create concrete positive outcomes for every sector. Select a sector to see how.</p>
+    <div class="sec-tag">Agreed Commitments</div>
+    <h2 class="sec-h2" id="comm-h">Commitments by Sector</h2>
+    <p class="sec-sub">What each group commits to. Items marked <span class="open-badge" style="vertical-align:middle;margin-left:0;">Open Point</span> remain under active negotiation. <span class="future-badge" style="vertical-align:middle;margin-left:0;">Future Scope</span> items are aspirational targets for the next phase.</p>
 
-    <nav class="tabs-nav" role="tablist" aria-label="Sector groups">
+    <nav class="tabs-nav" role="tablist" aria-label="Stakeholder groups">
       <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-model" data-tab="model">🧠 AI Model Providers</button>
       <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-dc" data-tab="dc">🏭 Data Centres</button>
       <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-eng" data-tab="eng">⚙️ AI Engineers</button>
       <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-co" data-tab="co">🏢 Companies Using AI</button>
       <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-env" data-tab="env">🌍 Environmentalists</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-reg" data-tab="reg">⚖️ EU Regulators</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-jour" data-tab="jour">📰 Journalists</button>
     </nav>
 
     <!-- AI MODEL PROVIDERS -->
     <div id="tab-model" class="tab-panel active" role="tabpanel">
-      <div class="pip-panel-grid">
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">01</span> Growth</div><p class="pip-text">Frontier AI built in Europe creates genuine tech sovereignty — a competitive alternative to US and Chinese hyperscalers that keeps strategic intelligence on EU soil.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">02</span> Technology</div><p class="pip-text">GPAI compliance and voluntary system cards build market trust. Responsible development is not a cost — it is a competitive advantage in regulated EU markets.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">03</span> Environment</div><p class="pip-text">Training on renewable and nuclear power (Nordic model: 1 tonne CO₂ vs. 19,700 for GPT-4) proves that sustainable frontier AI is technically achievable — and lowers cost per query.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">04</span> People</div><p class="pip-text">Transparent system cards protect users from harm; open-source options democratise access and empower researchers across Europe who cannot afford proprietary APIs.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">05</span> Fair Governance</div><p class="pip-text">Faster voluntary standardisation through the GPAI Code keeps regulation agile and proportionate — allowing providers to demonstrate good practice before legislation becomes binding.</p></div>
-      </div>
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Adhere to the GPAI Code of Practice (Transparency, Copyright, Safety &amp; Security) as the recognised compliance route; voluntary adherence provides a presumption of conformity until harmonised European standards are published.</div><div class="ci-source">Source: <a href="https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai" target="_blank" rel="noopener">European Commission — GPAI Code of Practice</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Document known or estimated training energy and report a representative inference figure (e.g. energy per standard response). Comparable cross-provider reporting follows a single agreed EU measurement methodology before it becomes binding.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/annex/11/" target="_blank" rel="noopener">EU AI Act, Art. 53 &amp; Annex XI</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Publish a system card per model release covering capabilities, evaluations, limitations and risk assessment; maintain a public list of safety commitments.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Requirements apply to all providers serving the EU market (level playing field); reporting templates standardised and free; obligations scale with provider size (SME / small mid-cap relief).</div><div class="ci-source">Source: <a href="https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai" target="_blank" rel="noopener">European Parliament — Digital Omnibus on AI</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Establish a joint review council — AI model providers, EU regulators, data centres and AI-using market leaders — to develop and deploy safer and greener models through mutual investment and commitment. <span class="open-badge">Open Point</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Pursue a regulator–provider partnership to keep regulation in step with AI development pace and strengthen Europe against foreign hyperscalers. <span class="open-badge">Open Point</span></div></div></li>
+      </ul>
     </div>
 
     <!-- DATA CENTRES -->
     <div id="tab-dc" class="tab-panel" role="tabpanel">
-      <div class="pip-panel-grid">
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">01</span> Growth</div><p class="pip-text">Reliable, EU-located infrastructure attracts AI investment and anchors compute capacity in Europe — preventing dependency on non-European cloud providers for critical workloads.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">02</span> Technology</div><p class="pip-text">Smart, energy-efficient cooling and hardware design enables denser, more reliable compute — advancing both performance and sustainability simultaneously.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">03</span> Environment</div><p class="pip-text">PUE/WUE transparency creates measurable efficiency incentives. Clean energy procurement and waste-heat reuse reduce carbon exposure and operating cost at the same time.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">04</span> People</div><p class="pip-text">Waste heat piped to local homes, local employment from responsible siting, and community investment turn data centres from land-use conflicts into local assets.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">05</span> Fair Governance</div><p class="pip-text">A shared EU sustainability rating scheme creates a level playing field — no race to the bottom on environmental standards, and a clear compliance pathway for operators of every size.</p></div>
-      </div>
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Publish annually their PUE/WUE under the EU methodology, with high-level improvement targets. Tiered transparency model: SMEs publish aggregated KPIs; per-facility vs. aggregated publication scope remains under negotiation. <span class="open-badge">Open Point</span></div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive/energy-performance-data-centres_en" target="_blank" rel="noopener">EED (EU) 2023/1791 + Delegated Reg (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Procure clean energy; reuse/recirculate water; recover waste heat where technically, economically and locally feasible.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">In water-stressed locations, disclose cooling-water source and drought safeguards, and do not deploy water-intensive cooling that materially competes with household, agricultural or ecological water needs.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Support a phased EU data-centre sustainability rating scheme using a comparable EU methodology and, once adopted, publish the applicable rating and legally required public KPIs.</div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/news/commission-takes-first-step-towards-establishing-eu-wide-scheme-rating-sustainability-data-centres-2023-12-12_en" target="_blank" rel="noopener">European Commission — EU-wide sustainability rating scheme</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Genuine trade secrets (security architecture, pricing, supplier contracts, granular telemetry) remain confidential to competent authorities; scope of public disclosure is an open point. <span class="open-badge">Open Point</span></div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Reg (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Annual verification of environmental KPIs (PUE, WUE, water safeguards) by Journalists and Environmentalists to ensure accuracy and prevent greenwashing.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Regulation (EU) 2024/1364</a></div></div></li>
+      </ul>
     </div>
 
     <!-- AI ENGINEERS -->
     <div id="tab-eng" class="tab-panel" role="tabpanel">
-      <div class="pip-panel-grid">
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">01</span> Growth</div><p class="pip-text">Retaining AI talent in Europe is the single biggest lever on EU competitiveness. Fair conditions, open-source opportunities, and a clear professional framework reduce brain drain to US tech.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">02</span> Technology</div><p class="pip-text">Engineers' daily decisions — architecture choices, efficiency trade-offs, documentation standards — determine whether AI systems are safe, accountable, and maintainable at scale.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">03</span> Environment</div><p class="pip-text">Energy-efficient development practices (efficient model architectures, green CI/CD, responsible deployment cadence) simultaneously cut compute costs and carbon emissions.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">04</span> People</div><p class="pip-text">Professional accountability frameworks protect both workers and end users. Retraining fund commitments ensure engineers participate in supporting fair transitions for those displaced by AI.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">05</span> Fair Governance</div><p class="pip-text">Industry standards (IEEE, ACM, ISO 42001) and AI Act compliance give engineers a clear, proportionate framework — professional responsibility with legal certainty, not conflicting mandates.</p></div>
-      </div>
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Apply energy-efficient development and documentation practices, anticipating AI Act harmonised standards on resource use.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">EU AI Act, Art. 40</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Maintain professional accountability: document design choices, uphold cross-border compliance awareness, and conduct a user-impact review before deployment.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Support workforce transition and reskilling with employers, governments and educators; anchored to the EU Pact for Skills.</div><div class="ci-source">Source: <a href="https://pact-for-skills.ec.europa.eu/" target="_blank" rel="noopener">European Commission — EU Pact for Skills</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Document accessibility considerations (e.g., usability for disabled users) as part of standard design documentation.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Participate in annual public trust surveys to measure societal confidence in AI systems. <span class="future-badge">Future Scope</span></div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">EU AI Act, Art. 40</a></div></div></li>
+      </ul>
     </div>
 
     <!-- COMPANIES USING AI -->
     <div id="tab-co" class="tab-panel" role="tabpanel">
-      <div class="pip-panel-grid">
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">01</span> Growth</div><p class="pip-text">Predictable, clear rules (AI Act risk tiers, GDPR alignment) remove compliance uncertainty — enabling faster responsible deployment across all sectors from healthcare to logistics.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">02</span> Technology</div><p class="pip-text">AI tools that are transparent and explainable build trust with customers, employees, and regulators — and reduce the liability exposure that comes with opaque algorithmic decisions.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">03</span> Environment</div><p class="pip-text">Supplier sustainability requirements embedded in procurement decisions drive upstream environmental improvements across the entire AI value chain, from model training to data centre operation.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">04</span> People</div><p class="pip-text">Human oversight for high-stakes decisions protects employees and customers alike. Reskilling commitments when AI changes roles are both ethically right and practically good for retention.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">05</span> Fair Governance</div><p class="pip-text">GDPR and AI Act alignment reduces legal risk and enables cross-border operations without regulatory fragmentation — one coherent compliance framework across the EU single market.</p></div>
-      </div>
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Human oversight for every high-risk decision (credit, insurance, claims, employment): no loan, claim, benefit or price decided by algorithm alone.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/14/" target="_blank" rel="noopener">EU AI Act, Art. 14 — human oversight</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Transparency and a right to explanation when AI sets a price or makes a decision; no pricing or underwriting on protected or sensitive personal data.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">GDPR, Art. 22 — automated decisions</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Meet AI Act transparency duties: disclose when a user is interacting with a chatbot; label AI-generated public content unless a human editor has reviewed it and taken legal responsibility.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act, Art. 50 — transparency</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Make AI-content detection interoperable (e.g. a public API or an embedded signpost) so third-party platforms can verify whether content is AI-generated.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act, Art. 50 — transparency</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Categorise business AI tools into risk tiers (low-risk / high-risk / prohibited) and apply the operational rules for each tier.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Align with the EU AI Act and GDPR; adopt voluntary management standards (ISO/IEC 42001) and risk frameworks (NIST AI RMF) as good practice.</div><div class="ci-source">Source: <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001</a> · <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF 1.0</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Provide worker reskilling whenever AI changes a role, conditional on proportionate rules (regulatory sandboxes; SME relief and the deferred high-risk timeline).</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/57/" target="_blank" rel="noopener">EU AI Act, Art. 57 — regulatory sandboxes</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">08</div><div class="ci-body"><div class="ci-text">Pair each use case with a stated benefit and a managed risk; submit evidence on which rules help or hinder adoption.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">09</div><div class="ci-body"><div class="ci-text">Ensure that AI benefits reach rural, low-income, and underserved communities, supporting Europe's digital inclusion goals. <span class="future-badge">Future Scope</span></div></div></li>
+      </ul>
     </div>
 
     <!-- ENVIRONMENTALISTS -->
     <div id="tab-env" class="tab-panel" role="tabpanel">
-      <div class="pip-panel-grid">
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">01</span> Growth</div><p class="pip-text">Sustainable AI infrastructure is more resilient, less exposed to resource constraints, and cheaper to operate long-term — making the environmental case and the economic case identical.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">02</span> Technology</div><p class="pip-text">Data-driven environmental monitoring creates accountability pressure that drives genuine technical improvement — moving the industry from voluntary pledges to verified, comparable metrics.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">03</span> Environment</div><p class="pip-text">Binding PUE/WUE transparency and land/water reporting halts the worst environmental impacts before they become irreversible — 945 TWh and 1,200 billion litres of water demand real limits.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">04</span> People</div><p class="pip-text">Environmental accountability protects communities hosting data centres from energy poverty, water scarcity, and land-use conflicts — social and ecological justice aligned.</p></div>
-        <div class="pip-card"><div class="pip-card-title"><span class="pip-num">05</span> Fair Governance</div><p class="pip-text">Evidence-based metrics anchored to EU law (EED, Delegated Regulation) keep regulation honest and effective — not diluted by industry self-reporting or lobby-drafted loopholes.</p></div>
-      </div>
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Provide verified, sourced footprint metrics (energy, water, land, waste) to inform proportionate limits.</div><div class="ci-source">Source: <a href="https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works" target="_blank" rel="noopener">IEA — Energy and AI, 2025</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Ground obligations in existing EU law (EED + Delegated Regulation); support facility-level environmental-KPI transparency with redactions limited to genuine trade secrets.</div><div class="ci-source">Source: <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive/energy-performance-data-centres_en" target="_blank" rel="noopener">EED (EU) 2023/1791 + Delegated Reg (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Recommend (not mandate) that Member States use their existing freedom to lower the ≥500 kW reporting threshold, and that data centres additionally report a water-reduction strategy, territorial-impact analysis and employment data as EU-wide best practice.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Add land use and water-stress-zone classification as a fifth reporting dimension to the rating scheme, ideally before its first labels; treat as phase 2 anchored to an existing water-stress index. <span class="open-badge">Open Point</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Environmental scrutiny triggers on facility footprint (EED ≥500 kW, or lower national threshold), not on the AI Act model-compute threshold; Art. 55 is reserved for model-level systemic risk.</div><div class="ci-source">Source: <a href="https://artificialintelligenceact.eu/article/55/" target="_blank" rel="noopener">EU AI Act, Art. 55 — systemic risk</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Take part in independent monitoring and verification of environmental claims alongside Journalists.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Publish a yearly report summarising AI's environmental footprint across Europe, including energy, water, land impact, and waste — jointly verified with Journalists. <span class="future-badge">Future Scope</span></div></div></li>
+      </ul>
+    </div>
+
+    <!-- EU REGULATORS -->
+    <div id="tab-reg" class="tab-panel" role="tabpanel">
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Provide proportionate, predictable rules aligned to AI Act risk tiers and GDPR, with guidance, regulatory sandboxes and realistic timelines (including the deferred high-risk dates).</div><div class="ci-source">Source: <a href="https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai" target="_blank" rel="noopener">European Parliament — Digital Omnibus on AI</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Provide standardised, free reporting templates; scale obligations to actor size.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Advocate that per-facility environmental-performance KPIs be made public (via amendment to the Delegated Regulation), while protecting genuine trade secrets.</div><div class="ci-source">Source: <a href="https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj/eng" target="_blank" rel="noopener">Commission Delegated Reg (EU) 2024/1364</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Convene and chair the multi-stakeholder review council; mediate fairly; act as final arbiter. <span class="open-badge">Open Point</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Include a clear timeline summarising when different obligations under the EU AI Act become enforceable. <span class="future-badge">Future Scope</span></div><div class="ci-source">Source: <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank" rel="noopener">EU AI Act — Implementation Timeline</a></div></div></li>
+        <li class="commitment-item"><div class="ci-num">06</div><div class="ci-body"><div class="ci-text">Publish an annual briefing summarising progress on AI governance, enforcement, and standardisation. <span class="future-badge">Future Scope</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">07</div><div class="ci-body"><div class="ci-text">Categorise the priority of data being used by service providers. <span class="future-badge">Future Scope</span></div></div></li>
+      </ul>
+    </div>
+
+    <!-- JOURNALISTS -->
+    <div id="tab-jour" class="tab-panel" role="tabpanel">
+      <ul class="commitment-list">
+        <li class="commitment-item"><div class="ci-num">01</div><div class="ci-body"><div class="ci-text">Verify all claims and figures against primary sources before publication, and issue corrections where needed.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">02</div><div class="ci-body"><div class="ci-text">Be transparent about sources and methods; report each group's position fairly and without bias.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">03</div><div class="ci-body"><div class="ci-text">Maintain the shared evidence repository and publish the agreed final manifesto in the public interest.</div></div></li>
+        <li class="commitment-item"><div class="ci-num">04</div><div class="ci-body"><div class="ci-text">Join the multi-stakeholder review council as non-voting observers, ensuring transparency and public accountability in discussions about AI safety, sustainability, and competitiveness. <span class="future-badge">Future Scope</span></div></div></li>
+        <li class="commitment-item"><div class="ci-num">05</div><div class="ci-body"><div class="ci-text">Publish quarterly summaries of sustainability, safety, and governance developments across all stakeholder groups. <span class="future-badge">Future Scope</span></div></div></li>
+      </ul>
     </div>
 
   </div>
@@ -602,6 +704,11 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
         <p class="bi-text">Independent verification by Environmentalists and Journalists against published KPIs; review milestone aligned to the Art. 40 report due 2 August 2028.</p>
         <p class="bi-source">Source: EU AI Act, Art. 40 — <a href="https://artificialintelligenceact.eu/article/40/" target="_blank" rel="noopener">artificialintelligenceact.eu</a></p>
       </div>
+      <div class="backbone-item">
+        <div class="bi-num">Principle 6</div>
+        <div class="bi-title">Documentation <span class="future-badge">Future Scope</span></div>
+        <p class="bi-text">All AI model providers and data centre operators publish standardised annual documentation reports — increasing transparency and building public trust in the EU AI ecosystem.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -633,13 +740,71 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
 </section>
 
 <!-- ════════════════════════
+     OPEN POINTS
+════════════════════════ -->
+<section class="open-sec" id="open-points" aria-labelledby="open-h">
+  <div class="wrap">
+    <div class="open-kicker">Future Scope — Under Active Negotiation</div>
+    <h2 class="sec-h2" id="open-h">Open Points to Resolve</h2>
+    <p class="sec-sub" style="max-width:720px;">These nine items remain under active negotiation and are not part of the signed manifesto. They represent the next phase of work — shown here for transparency, excluded from the downloadable PDF.</p>
+    <div class="open-grid">
+      <div class="open-item">
+        <div class="oi-num">Open Point 1</div>
+        <div class="oi-title">Facility-Level Environmental Disclosure</div>
+        <p class="oi-text">Environmentalists vs Data Centres: how much per-facility KPI data becomes public. Regulator lean: energy, water, PUE/WUE and cooling safeguards public; security, pricing, contracts and granular telemetry remain confidential.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 2</div>
+        <div class="oi-title">Comparable Energy-Reporting Methodology</div>
+        <p class="oi-text">Adopt a single EU measurement standard before "comparable" cross-provider reporting becomes binding. Proposed basis: Mistral's lifecycle indicators; apply to all providers serving the EU market.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 3</div>
+        <div class="oi-title">Multi-Stakeholder Review Council</div>
+        <p class="oi-text">At AI Model Providers' request: a joint council of providers, EU regulators, data centres and AI-using leaders. Mandate, membership (proposed: add environmentalists) and regulator chair to be agreed.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 4</div>
+        <div class="oi-title">Rating-Scheme Land-Use / Water-Stress Dimension</div>
+        <p class="oi-text">Environmentalists ask for a fifth KPI category before the rating scheme's first labels (expected August 2027). Feasibility is uncertain; no harmonised EU land-use dataset exists — treat as phase 2.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 5</div>
+        <div class="oi-title">Proportionality, SME Relief &amp; Free Templates</div>
+        <p class="oi-text">Standardise free reporting templates and scale obligations to actor size so compliance cost does not fall disproportionately on EU startups and SMEs.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 6</div>
+        <div class="oi-title">Regulatory Pace &amp; Competitiveness Partnership</div>
+        <p class="oi-text">At AI Model Providers' request: a regulator–provider partnership to update rules at AI development pace. Regulator lean: support competitiveness, faster standardisation, and a level playing field — not reduced scrutiny.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 7</div>
+        <div class="oi-title">Tax Rebates &amp; Incentives for Green AI</div>
+        <p class="oi-text">Discussion between EU regulators and data centres on tax rebates or other incentives for companies and AI model providers using verified greener AI approaches.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 8</div>
+        <div class="oi-title">Reskilling Funds &amp; R&amp;D Startup Funding</div>
+        <p class="oi-text">Dedicated public funding for worker reskilling programmes and R&amp;D support for AI startups. Scope and delivery mechanism to be agreed between regulators and deployers.</p>
+      </div>
+      <div class="open-item">
+        <div class="oi-num">Open Point 9</div>
+        <div class="oi-title">Independent Verification of All Sustainability Claims</div>
+        <p class="oi-text">All sustainability, safety, and transparency claims made by AI model providers and data centres will undergo independent verification by Journalists and Environmentalists, reinforcing accountability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
      SIGNATORIES
 ════════════════════════ -->
 <section class="sig-sec" id="signatories" aria-labelledby="sig-h">
   <div class="wrap">
     <div class="sec-tag" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.7);">Signed Commitments</div>
     <h2 class="sec-h2" id="sig-h">Signatories</h2>
-    <p class="sec-sub">Six stakeholder groups who negotiated and signed this manifesto. Click any group to read their full position.</p>
+    <p class="sec-sub">Seven stakeholder groups who negotiated and signed this manifesto. Click any group to read their full position.</p>
     <div class="sig-grid">
       <a href="group-ai-model-providers.html" class="sig-card">
         <span class="sig-icon">🧠</span>
@@ -683,6 +848,13 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
           <div class="sig-status"><span class="sig-dot ready"></span>View position →</div>
         </div>
       </a>
+      <div class="sig-card">
+        <span class="sig-icon">📰</span>
+        <div>
+          <div class="sig-name">Journalists</div>
+          <div class="sig-status"><span class="sig-dot ready"></span>Coordinators &amp; co-signatories</div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -749,6 +921,11 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
       <span>Vihang Dilip Gaokar — AI Engineer</span>
       <span>Dhwani Kariya — AI Engineer</span>
       <span>Keerthika Santhanakrishnan — AI Engineer</span>
+      <span>Carmen Gutiérrez Silva — Journalist &amp; Coordinator</span>
+      <span>Casey Sky Donnelly Quinn — Journalist &amp; Coordinator</span>
+      <span>Manisha Mani — Journalist &amp; Coordinator</span>
+      <span>Naveen Stanley — Journalist &amp; Coordinator</span>
+      <span>Ramya Barri — Journalist &amp; Coordinator</span>
     </div>
   </div>
 </section>
@@ -762,7 +939,7 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
     </div>
     <div class="foot-title">Manifesto for Sustainable AI</div>
     <div class="foot-meta">
-      Version 0.2 · ICAM BIP Toulouse 2026 · 1 July 2026<br>
+      Version 0.3 · Signed · ICAM BIP Toulouse 2026 · 2 July 2026<br>
       Prepared through structured stakeholder debate as part of the Erasmus+ Blended Intensive Programme.<br>
       This is a living document — the latest version supersedes all earlier ones.
     </div>
