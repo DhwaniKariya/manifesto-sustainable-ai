@@ -54,7 +54,7 @@ a{color:inherit;}
 .btn-pdf:hover{background:var(--blue-dk);}
 
 /* ── HERO ─────────────────────────────────── */
-.hero{background:var(--blue);padding:108px 0 96px;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(-45deg,#004494,#002d6b,#1565C0,#003776);background-size:400% 400%;animation:heroGrad 12s ease infinite;padding:108px 0 96px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;right:-150px;top:-150px;width:580px;height:580px;
   border-radius:50%;border:90px solid rgba(255,255,255,.028);}
 .hero::after{content:'';position:absolute;left:-100px;bottom:-130px;width:460px;height:460px;
@@ -99,6 +99,35 @@ a{color:inherit;}
 .pc-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--blue);
   margin-bottom:10px;letter-spacing:-.01em;}
 .pc-text{font-size:13.5px;color:var(--text-2);line-height:1.72;}
+/* ── PRINCIPLE CARD ANIMATIONS ─────────── */
+.pc-visual{position:absolute;top:12px;right:12px;width:60px;height:54px;pointer-events:none;}
+.pc-visual svg{width:100%;height:100%;overflow:visible;}
+.pcb1,.pcb2,.pcb3{transform-box:fill-box;transform-origin:bottom center;}
+.pcb1{animation:pcBarRise 2.6s ease-in-out infinite 0s;}
+.pcb2{animation:pcBarRise 2.6s ease-in-out infinite .3s;}
+.pcb3{animation:pcBarRise 2.6s ease-in-out infinite .6s;}
+@keyframes pcBarRise{0%,100%{transform:scaleY(.18);opacity:.08;}55%{transform:scaleY(1);opacity:.24;}}
+.pcn1,.pcn2,.pcn3,.pcn4{transform-box:fill-box;transform-origin:center;}
+.pcn1{animation:pcNodePulse 2.2s ease-in-out infinite 0s;}
+.pcn2{animation:pcNodePulse 2.2s ease-in-out infinite .35s;}
+.pcn3{animation:pcNodePulse 2.2s ease-in-out infinite .7s;}
+.pcn4{animation:pcNodePulse 2.2s ease-in-out infinite .15s;}
+@keyframes pcNodePulse{0%,100%{transform:scale(.6);opacity:.14;}50%{transform:scale(1);opacity:.28;}}
+.pcw1{animation:pcWave 3s ease-in-out infinite 0s;}
+.pcw2{animation:pcWave 3s ease-in-out infinite .65s;}
+@keyframes pcWave{0%,100%{transform:translateX(0);}50%{transform:translateX(-8px);}}
+.pcleaf{transform-box:fill-box;transform-origin:50% 100%;animation:pcLeaf 4s ease-in-out infinite;}
+@keyframes pcLeaf{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
+.pcp1,.pcp2,.pcp3{transform-box:fill-box;transform-origin:center;}
+.pcp1{animation:pcPeople 2.8s ease-in-out infinite 0s;}
+.pcp2{animation:pcPeople 2.8s ease-in-out infinite .45s;}
+.pcp3{animation:pcPeople 2.8s ease-in-out infinite .9s;}
+@keyframes pcPeople{0%,100%{transform:scale(.62);opacity:.1;}50%{transform:scale(1);opacity:.26;}}
+.pcbeam{transform-box:fill-box;transform-origin:50% 0%;animation:pcBalance 3.6s ease-in-out infinite;}
+@keyframes pcBalance{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+@keyframes heroGrad{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
 a.principle-card{text-decoration:none;display:block;}
 
 /* ── PRINCIPLE DETAILS ────────────────────── */
@@ -333,26 +362,76 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
     <p class="sec-sub">Five values every signatory commits to uphold, regardless of sector.</p>
     <div class="principles-grid">
       <a class="principle-card" href="#principle-01">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg" fill="rgba(0,68,148,.22)">
+            <rect class="pcb1" x="3" y="28" width="14" height="26" rx="2"/>
+            <rect class="pcb2" x="23" y="16" width="14" height="38" rx="2"/>
+            <rect class="pcb3" x="43" y="5" width="14" height="49" rx="2"/>
+          </svg>
+        </div>
         <div class="pc-num">01</div>
         <div class="pc-title">Growth</div>
         <p class="pc-text">Europe's innovation and competitiveness are worth defending.</p>
       </a>
       <a class="principle-card" href="#principle-02">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="27" x2="30" y2="10" stroke="rgba(0,68,148,.13)" stroke-width="1.5"/>
+            <line x1="10" y1="27" x2="30" y2="44" stroke="rgba(0,68,148,.13)" stroke-width="1.5"/>
+            <line x1="30" y1="10" x2="50" y2="27" stroke="rgba(0,68,148,.13)" stroke-width="1.5"/>
+            <line x1="30" y1="44" x2="50" y2="27" stroke="rgba(0,68,148,.13)" stroke-width="1.5"/>
+            <line x1="30" y1="10" x2="30" y2="44" stroke="rgba(0,68,148,.07)" stroke-width="1"/>
+            <circle class="pcn1" cx="10" cy="27" r="6" fill="rgba(0,68,148,.22)"/>
+            <circle class="pcn2" cx="30" cy="10" r="5" fill="rgba(0,68,148,.2)"/>
+            <circle class="pcn3" cx="30" cy="44" r="5" fill="rgba(0,68,148,.2)"/>
+            <circle class="pcn4" cx="50" cy="27" r="7" fill="rgba(0,68,148,.26)"/>
+          </svg>
+        </div>
         <div class="pc-num">02</div>
         <div class="pc-title">Technology</div>
         <p class="pc-text">AI built and used responsibly, safely, and openly where possible.</p>
       </a>
       <a class="principle-card" href="#principle-03">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="pcw1" d="M-2 38 Q13 26 30 38 Q47 50 62 38" stroke="rgba(0,68,148,.2)" stroke-width="2.5"/>
+            <path class="pcw2" d="M-2 28 Q13 16 30 28 Q47 40 62 28" stroke="rgba(0,68,148,.13)" stroke-width="2"/>
+            <path class="pcleaf" d="M30 6 Q41 18 30 33 Q19 18 30 6Z" fill="rgba(0,68,148,.2)"/>
+          </svg>
+        </div>
         <div class="pc-num">03</div>
         <div class="pc-title">Environment</div>
         <p class="pc-text">AI's energy, water, and material footprint measured honestly and reduced.</p>
       </a>
       <a class="principle-card" href="#principle-04">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="40" x2="30" y2="15" stroke="rgba(0,68,148,.12)" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <line x1="50" y1="40" x2="30" y2="15" stroke="rgba(0,68,148,.12)" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <line x1="10" y1="40" x2="50" y2="40" stroke="rgba(0,68,148,.12)" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <circle class="pcp1" cx="10" cy="40" r="7" fill="rgba(0,68,148,.2)"/>
+            <circle class="pcp2" cx="50" cy="40" r="7" fill="rgba(0,68,148,.2)"/>
+            <circle class="pcp3" cx="30" cy="15" r="8" fill="rgba(0,68,148,.25)"/>
+          </svg>
+        </div>
         <div class="pc-num">04</div>
         <div class="pc-title">People</div>
         <p class="pc-text">Workers, users, and citizens protected; the benefits shared.</p>
       </a>
       <a class="principle-card" href="#principle-05">
+        <div class="pc-visual" aria-hidden="true">
+          <svg viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="30" y1="4" x2="30" y2="50" stroke="rgba(0,68,148,.18)" stroke-width="2"/>
+            <line x1="14" y1="50" x2="46" y2="50" stroke="rgba(0,68,148,.15)" stroke-width="2"/>
+            <g class="pcbeam">
+              <line x1="6" y1="20" x2="54" y2="20" stroke="rgba(0,68,148,.28)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="9" y1="20" x2="9" y2="34" stroke="rgba(0,68,148,.16)" stroke-width="1.5"/>
+              <path d="M3 36 Q9 44 17 36" stroke="rgba(0,68,148,.24)" stroke-width="2" fill="rgba(0,68,148,.06)"/>
+              <line x1="51" y1="20" x2="51" y2="34" stroke="rgba(0,68,148,.16)" stroke-width="1.5"/>
+              <path d="M43 36 Q49 44 57 36" stroke="rgba(0,68,148,.24)" stroke-width="2" fill="rgba(0,68,148,.06)"/>
+            </g>
+          </svg>
+        </div>
         <div class="pc-num">05</div>
         <div class="pc-title">Fair Governance</div>
         <p class="pc-text">Rules proportionate, transparent, and evidence-based.</p>
@@ -721,6 +800,20 @@ footer{background:var(--blue-dk);padding:56px 0 44px;border-top:1px solid rgba(2
       }
     });
   });
+})();
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var targets = document.querySelectorAll(
+    '.pd-sec .wrap,.pip-sec .wrap,.backbone-sec .wrap,' +
+    '.measurement-sec .wrap,.open-sec .wrap,.sig-sec .sig-grid,' +
+    '.coord-sec .coord-inner'
+  );
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1});
+  targets.forEach(function(el){el.classList.add('reveal');obs.observe(el);});
 })();
 </script>
 </body>
